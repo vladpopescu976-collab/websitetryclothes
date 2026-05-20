@@ -1,6 +1,6 @@
 /* TryClothes - base */
 :root {
-    color-scheme: dark;
+    color-scheme: light;
     --bg: #030303;
     --bg-soft: #080808;
     --cream: #fdfbf7;
@@ -36,12 +36,11 @@ body {
     min-width: 320px;
     overflow-x: hidden;
     background:
-        radial-gradient(circle at 12% 12%, rgba(232, 201, 130, 0.2), transparent 28rem),
-        radial-gradient(circle at 88% 38%, rgba(111, 154, 255, 0.13), transparent 32rem),
-        radial-gradient(circle at 40% 84%, rgba(232, 201, 130, 0.09), transparent 34rem),
-        linear-gradient(180deg, #030303 0%, #070604 34%, #050506 66%, #080604 100%),
-        var(--bg);
-    color: var(--text);
+        radial-gradient(circle at 12% 12%, rgba(232, 201, 130, 0.18), transparent 28rem),
+        radial-gradient(circle at 88% 38%, rgba(111, 154, 255, 0.08), transparent 32rem),
+        linear-gradient(180deg, #fdfbf7 0%, #f5efe5 52%, #fdfbf7 100%),
+        var(--cream);
+    color: var(--onyx);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
@@ -101,10 +100,10 @@ input {
     justify-content: space-between;
     gap: 20px;
     padding: 10px 12px 10px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(24, 24, 24, 0.08);
     border-radius: 999px;
-    background: rgba(8, 8, 8, 0.54);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    background: rgba(253, 251, 247, 0.72);
+    box-shadow: 0 24px 80px rgba(24, 24, 24, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.72);
     transform: translateX(-50%);
     backdrop-filter: blur(28px) saturate(140%);
     -webkit-backdrop-filter: blur(28px) saturate(140%);
@@ -115,7 +114,7 @@ input {
     align-items: center;
     gap: 12px;
     min-width: 0;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(24, 24, 24, 0.9);
     font-weight: 800;
     letter-spacing: 0;
 }
@@ -126,8 +125,8 @@ input {
     object-fit: cover;
     border-radius: 13px;
     background: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.34);
+    border: 1px solid rgba(24, 24, 24, 0.1);
+    box-shadow: 0 12px 30px rgba(24, 24, 24, 0.14);
 }
 
 .brand-logo-small {
@@ -145,15 +144,15 @@ input {
 .nav-link {
     padding: 12px 14px;
     border-radius: 999px;
-    color: rgba(255, 255, 255, 0.66);
+    color: rgba(24, 24, 24, 0.62);
     font-size: 0.9rem;
     font-weight: 600;
     transition: color 240ms ease, background 240ms ease;
 }
 
 .nav-link:hover {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.07);
+    color: var(--onyx);
+    background: rgba(24, 24, 24, 0.06);
 }
 
 .button {
