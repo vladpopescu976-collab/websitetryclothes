@@ -3,6 +3,8 @@
     color-scheme: dark;
     --bg: #030303;
     --bg-soft: #080808;
+    --cream: #fdfbf7;
+    --onyx: #181818;
     --text: #f7f7f7;
     --muted: rgba(247, 247, 247, 0.74);
     --faint: rgba(247, 247, 247, 0.48);
@@ -16,6 +18,8 @@
     --radius-md: 24px;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --max: 1180px;
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, sans-serif;
 }
 
 * {
@@ -24,6 +28,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 108px;
 }
 
 body {
@@ -37,7 +42,7 @@ body {
         linear-gradient(180deg, #030303 0%, #070604 34%, #050506 66%, #080604 100%),
         var(--bg);
     color: var(--text);
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Segoe UI, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: geometricPrecision;
     scrollbar-width: none;
@@ -112,7 +117,7 @@ input {
     min-width: 0;
     color: rgba(255, 255, 255, 0.92);
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
 }
 
 .brand-logo {
@@ -161,7 +166,7 @@ input {
     border-radius: 999px;
     cursor: pointer;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
     transition: transform 240ms var(--ease-out), box-shadow 240ms ease, background 240ms ease;
 }
 

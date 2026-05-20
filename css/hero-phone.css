@@ -103,17 +103,17 @@
 .hero-copy h1,
 .story-caption h2,
 .section-heading h2,
-.product-copy h2,
 .cta-inner h2 {
     margin: 0;
-    letter-spacing: -0.055em;
+    font-family: var(--font-serif);
+    letter-spacing: 0;
     line-height: 0.92;
 }
 
 .hero-copy h1 {
     color: rgba(255, 255, 255, 0.94);
     font-size: clamp(2.6rem, 6vw, 5.5rem);
-    font-weight: 900;
+    font-weight: 600;
     text-shadow: 0 22px 90px rgba(0, 0, 0, 0.58), 0 0 54px rgba(232, 201, 130, 0.1);
 }
 
@@ -432,7 +432,7 @@
 .story-caption h2 {
     color: rgba(255, 255, 255, 0.9);
     font-size: clamp(1.55rem, 3vw, 2.65rem);
-    font-weight: 900;
+    font-weight: 600;
     text-shadow: 0 20px 90px rgba(0, 0, 0, 0.58), 0 0 46px rgba(232, 201, 130, 0.12);
 }
 
