@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "smooth-scroll-2026-05-20";
+    const siteVersion = "hero-balance-2026-05-20";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -45,7 +45,7 @@
         const blurIn = isMobile ? "blur(0px)" : "blur(4px)";
         const blurOut = isMobile ? "blur(0px)" : "blur(10px)";
         const finalBlur = isMobile ? "blur(8px)" : "blur(20px)";
-        const mobileY = isMobile ? { intro: -66, float: -104, final: -122 } : { intro: -98, float: -138, final: -158 };
+        const mobileY = isMobile ? { intro: -84, float: -124, final: -146 } : { intro: -84, float: -122, final: -142 };
 
         const tl = gsap.timeline({
             scrollTrigger: {

@@ -1,5 +1,5 @@
 /* TryClothes CSS entrypoint. Keep section-specific styles in /css. */
-@import url("./css/base.css?v=20260520herofit");
-@import url("./css/hero-phone.css?v=20260520herofit");
-@import url("./css/sections.css?v=20260520herofit");
-@import url("./css/responsive.css?v=20260520herofit");
+@import url("./css/base.css?v=20260520herobalance");
+@import url("./css/hero-phone.css?v=20260520herobalance");
+@import url("./css/sections.css?v=20260520herobalance");
+@import url("./css/responsive.css?v=20260520herobalance");

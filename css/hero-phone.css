@@ -81,7 +81,7 @@
 
 .hero-copy {
     position: absolute;
-    top: clamp(76px, 12vh, 120px);
+    top: clamp(98px, 15vh, 148px);
     left: 50%;
     z-index: 8;
     width: min(620px, calc(100% - 40px));
@@ -420,12 +420,12 @@
 }
 
 .story-caption-mid {
-    bottom: clamp(58px, 9vh, 104px);
+    bottom: clamp(18px, 3.6vh, 46px);
 }
 
 .story-caption-final {
     top: auto;
-    bottom: clamp(58px, 9vh, 104px);
+    bottom: clamp(18px, 3.6vh, 46px);
 }
 
 .story-caption h2 {
