@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TryClothes | Probează haine online | Clothes Try-On</title>
+    <meta name="description" content="TryClothes te ajută să probezi haine online. Încarcă o poză, alege hainele dorite și vezi cum îți vin înainte să cumperi.">
+    <meta name="keywords" content="TryClothes, haine, probează haine, proba haine, probă virtuală, haine online, AI clothes try-on, virtual try on, outfit AI, aplicație haine">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="TryClothes">
+    <meta name="theme-color" content="#030303">
+    <link rel="canonical" href="https://try-clothes.com/">
+    <link rel="alternate" hreflang="ro" href="https://try-clothes.com/">
+    <link rel="alternate" hreflang="x-default" href="https://try-clothes.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="TryClothes">
+    <meta property="og:title" content="TryClothes | Probează haine online">
+    <meta property="og:description" content="Proba virtuală premium pentru haine. Vezi cum îți vin articolele vestimentare înainte să le cumperi.">
+    <meta property="og:url" content="https://try-clothes.com/">
+    <meta property="og:image" content="https://try-clothes.com/assets/hero-bg-bw.jpg">
+    <meta property="og:image:alt" content="TryClothes clothes try-on pentru probă virtuală de haine">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TryClothes | Probează haine online">
+    <meta name="twitter:description" content="Încarcă o poză, alege hainele dorite și p robează virtual ținute înainte să cumperi.">
+    <meta name="twitter:image" content="https://try-clothes.com/assets/hero-bg-bw.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/logo.png">
+    <link rel="stylesheet" href="./styles.css?v=20260520modular">
+    <link rel="preload" as="image" href="./assets/app-home.jpg">
+    <link rel="preload" as="image" href="./assets/app-fit-profile.jpg">
+    <link rel="preload" as="image" href="./assets/app-outfit-result.jpg">
+    <link rel="preload" as="image" href="./assets/app-outfit-video-ready.jpg">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="./app.js?v=20260520wowlaunch" defer></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "@id": "https://try-clothes.com/#organization",
+                    "name": "TryClothes",
+                    "url": "https://try-clothes.com/",
+                    "logo": "https://try-clothes.com/assets/logo.png",
+                    "description": "TryClothes construiește o experiență premium de probă virtuală pentru haine.",
+                    "sameAs": [
+                        "https://www.instagram.com/tryclothes",
+                        "https://www.tiktok.com/@tryclothes"
+                    ]
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://try-clothes.com/#website",
+                    "url": "https://try-clothes.com/",
+                    "name": "TryClothes",
+                    "publisher": {
+                        "@id": "https://try-clothes.com/#organization"
+                    },
+                    "inLanguage": "ro-RO"
+                },
+                {
+                    "@type": "SoftwareApplication",
+                    "@id": "https://try-clothes.com/#app",
+                    "name": "TryClothes",
+                    "applicationCategory": "LifestyleApplication",
+                    "operatingSystem": "iOS",
+                    "url": "https://try-clothes.com/",
+                    "image": "https://try-clothes.com/assets/hero-bg-bw.jpg",
+                    "description": "Aplicație pentru proba virtuală de haine: probează haine online, înainte să cumperi.",
+                    "keywords": "clothes, haine, proba haine, probează haine, probă virtuală, AI clothes try-on, haine online",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "0",
+                        "priceCurrency": "EUR",
+                        "availability": "https://schema.org/PreOrder"
+                    },
+                    "publisher": {
+                        "@id": "https://try-clothes.com/#organization"
+                    }
+                },
+                {
+                    "@type": "FAQPage",
+                    "@id": "https://try-clothes.com/#faq",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Cum pot proba haine online cu TryClothes?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Încarci o poză cu tine, alegi hainele pe care vrei să le testezi, iar TryClothes generează o probă virtuală."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Pot proba clothes și ținute din magazine online?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Da. Poți porni de la poze, screenshots sau articole vestimentare salvate, apoi le poți vedea într-un preview realist pe corpul tău."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "De ce este TryClothes diferit de un filtru AI?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "TryClothes este gândit ca un produs fashion-tech premium: analizează proporții, lumină, texturi și contur, nu doar suprapune o imagine peste o poză."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "TryClothes este disponibil pe iPhone?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Aplicația este pregătită pentru iOS în fază beta. Te poți înscrie pe lista ca să probezi haine online înainte de lansarea publică."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</head>
+<body>
+    <nav class="site-nav" aria-label="Navigație principală">
+        <a class="brand-lockup" href="#scroll-master" aria-label="TryClothes home">
+            <img src="./assets/logo.png" alt="TryClothes logo - probă haine" class="brand-logo">
+            <span>TryClothes</span>
+        </a>
+
+        <div class="nav-actions">
+            <a class="nav-link" href="#experience">Haine</a>
+            <a class="nav-link" href="#how-it-works">Cum funcționează</a>
+            <a class="button button-primary button-small" href="#download">Beta</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="scroll-master" class="hero-shell" aria-label="Prezentare TryClothes">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+
+            <div class="hero-stage scene-3d">
+                <div class="cinematic-light cinematic-light-left" aria-hidden="true"></div>
+                <div class="cinematic-light cinematic-light-right" aria-hidden="true"></div>
+
+                <div id="hero-text" class="hero-copy">
+                    <p class="eyebrow">TryClothes</p>
+                    <h1>Probează haine online.</h1>
+                    <p class="hero-subtitle">TryClothes este cabina ta de probă virtuală pentru haine. Vezi cum îți vin înainte să cumperi.</p>
+                    <div class="scroll-cue" aria-hidden="true">
+                        <span>Dă scroll</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </div>
+
+                <div id="phone-drop-wrapper" class="phone-drop">
+                    <div id="phone-3d" class="phone-3d-wrapper" aria-label="TryClothes app preview">
+                        <div class="phone-body-layer" style="transform: translateZ(9px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(8px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(7px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(6px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(5px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(4px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(3px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(2px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(1px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(0px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-1px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-2px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-3px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-4px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-5px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-6px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-7px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-8px)" aria-hidden="true"></div>
+                        <div class="phone-body-layer" style="transform: translateZ(-9px)" aria-hidden="true"></div>
+
+                        <div class="phone-face phone-front">
+                            <div class="dynamic-island" aria-hidden="true"></div>
+
+                            <div class="screen-mask">
+                                <img id="screen-1" src="./assets/app-home.jpg" class="screen-img" alt="Pagina Home TryClothes pentru probă haine online" loading="eager" decoding="async">
+                                <img id="screen-3" src="./assets/app-outfit-result.jpg" class="screen-img" alt="Pagina Outfit result TryClothes cu haine probate virtual" loading="eager" decoding="async">
+                                <div class="glare" id="glare-front" aria-hidden="true"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="phone-face phone-back">
+                            <div class="dynamic-island" aria-hidden="true"></div>
+
+                            <div class="screen-mask">
+                                <img src="./assets/app-fit-profile.jpg" class="screen-img screen-img-fit-profile" alt="Pagina Fit profile TryClothes cu măsurători pentru probă haine" loading="eager" decoding="async">
+                                <div class="processing-layer" aria-hidden="true"></div>
+                                <div class="scan-line" aria-hidden="true"></div>
+                                <div class="glare" id="glare-back" aria-hidden="true"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="text-mid" class="story-caption story-caption-mid">
+                    <p class="eyebrow">Virtual fitting room</p>
+                    <h2>Probă realistă, nu filtru.</h2>
+                    <p>Aplicatia analizează haine, pliuri, lumină și forma corpului.</p>
+                </div>
+
+                <div id="text-final" class="story-caption story-caption-final">
+                    <p class="eyebrow">Try-on ready</p>
+                    <h2>Probează înainte să cumperi.</h2>
+                    <p>Ținute testate virtual, pregătite pentru garderoba ta.</p>
+                </div>
+
+                <div id="transition-wash" class="transition-wash" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <section id="experience" class="section section-intro">
+            <div class="section-inner">
+                <div class="section-heading gs-reveal">
+                    <p class="eyebrow">Probă haine virtuală</p>
+                    <h2>Probează haine înainte să cumperi.</h2>
+                    <p>TryClothes transformă o poză cu tine și orice articol vestimentar într-un preview curat, credibil și ușor de comparat.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card gs-reveal">
+                        <div class="feature-icon"><i data-lucide="scan"></i></div>
+                        <span class="feature-number">01</span>
+                        <h3>Încarcă hainele</h3>
+                        <p>Alege piese vestimentare din magazine online, social media ori poze salvate.</p>
+                    </article>
+
+                    <article class="feature-card feature-card-raised gs-reveal">
+                        <div class="feature-icon"><i data-lucide="fingerprint"></i></div>
+                        <span class="feature-number">02</span>
+                        <h3>Alege poza ta</h3>
+                        <p>Aplicația citește proporțiile reale, postura și lumina ca proba virtuală să arate natural pe corpul tău.</p>
+                    </article>
+
+                    <article class="feature-card gs-reveal">
+                        <div class="feature-icon feature-icon-light"><i data-lucide="zap"></i></div>
+                        <span class="feature-number">03</span>
+                        <h3>Probează instant</h3>
+                        <p>Vezi cum îți vin hainele în câteva secunde, cu texturi, umbre și contur adaptate ținutei.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section section-product">
+            <div class="section-inner product-layout">
+                <div class="product-copy">
+                    <p class="eyebrow">Cum funcționează</p>
+                    <h2>O probă virtuală premium, construită pentru decizii rapide.</h2>
+                    <p>Interfața TryClothes este gândită pentru cumpărături online fără ghicit: probează haine, compară outfits și alege doar articole vestimentare care chiar arată bine pe tine.</p>
+                </div>
+
+                <div class="product-phone-mockup" aria-label="TryClothes outfit preview pe iPhone">
+                    <div class="product-phone-shell">
+                        <div class="product-phone-island" aria-hidden="true"></div>
+                        <img src="./assets/app-outfit-video-ready.jpg" alt="TryClothes outfit preview pe iPhone" loading="lazy" decoding="async">
+                    </div>
+                </div>
+
+                <div class="workflow-list" aria-label="Pașii principali TryClothes">
+                    <div>
+                        <span>01</span>
+                        <p>Încarci o poză cu tine sau alegi un look salvat.</p>
+                    </div>
+                    <div>
+                        <span>02</span>
+                        <p>Selectezi haina pe care vrei să o vezi pe corp.</p>
+                    </div>
+                    <div>
+                        <span>03</span>
+                        <p>Compari rezultatul și păstrezi ținutele care merită.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section section-faq">
+            <div class="section-inner faq-layout">
+                <div class="section-heading faq-heading gs-reveal">
+                    <p class="eyebrow">Întrebări frecvente</p>
+                    <h2>Tot ce trebuie să știi despre proba virtuală de haine.</h2>
+                </div>
+
+                <div class="faq-grid">
+                    <article class="faq-item gs-reveal">
+                        <h3>Cum pot proba haine online cu TryClothes?</h3>
+                        <p>Încarci o poză cu tine, alegi hainele sau clothes pe care vrei să le testezi, iar TryClothes generează o probă virtuală cu AI.</p>
+                    </article>
+
+                    <article class="faq-item gs-reveal">
+                        <h3>Pot proba clothes și ținute din magazine online?</h3>
+                        <p>Da. Poți porni de la poze sau articole vestimentare salvate, apoi le poți vedea într-un preview realist pe corpul tău.</p>
+                    </article>
+
+                    <article class="faq-item gs-reveal">
+                        <h3>De ce este diferit de un filtru AI?</h3>
+                        <p>TryClothes analizează proporții, lumină, texturi și contur. Scopul este o probă de haine credibilă, nu o suprapunere rapidă.</p>
+                    </article>
+
+                    <article class="faq-item gs-reveal">
+                        <h3>TryClothes este disponibil pe iPhone?</h3>
+                        <p>Aplicația este pregătită pentru iOS în fază beta. Înscrie-te pe lista ca să probezi haine online înainte de lansarea publică.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="section section-cta">
+            <div class="cta-glow" aria-hidden="true"></div>
+            <div class="section-inner cta-inner gs-reveal">
+                <p class="eyebrow">Private beta</p>
+                <h2>Probează haine înaintea tuturor.</h2>
+                <p>Locurile pentru Beta Privată sunt limitate. Intră pe lista și primești acces la TryClothes înainte de lansare.</p>
+
+                <form class="waitlist-form" data-waitlist-form>
+                    <label class="sr-only" for="waitlist-email">Email</label>
+                    <input id="waitlist-email" type="email" name="email" placeholder="Adresa ta de email" required autocomplete="email">
+                    <button class="button button-primary" type="submit">Vreau să probez</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand-lockup brand-lockup-footer" href="#scroll-master">
+                <img src="./assets/logo.png" alt="TryClothes logo pentru aplicația de probă virtuală haine" class="brand-logo brand-logo-small">
+                <span>TryClothes</span>
+            </a>
+            <p>© 2026 TryClothes. AI clothes try-on pentru haine, ținute și probă virtuală.</p>
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Privacy</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
