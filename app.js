@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "waitlist-fix-2026-05-20";
+    const siteVersion = "web3forms-2026-05-20";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -168,9 +168,9 @@
             event.preventDefault();
             const formData = new FormData(form);
             const email = formData.get("email");
-            const honey = formData.get("_honey");
+            const botcheck = formData.get("botcheck");
 
-            if (!email || honey) {
+            if (!email || botcheck) {
                 return;
             }
 
@@ -183,8 +183,7 @@
             }
 
             try {
-                const endpoint = form.dataset.waitlistAjax || form.action;
-                const response = await fetch(endpoint, {
+                const response = await fetch(form.action, {
                     method: "POST",
                     body: formData,
                     headers: {

@@ -465,7 +465,7 @@
     margin: 54px auto 0;
 }
 
-.waitlist-form input[name="_honey"] {
+.waitlist-form input[name="botcheck"] {
     display: none;
 }
 
