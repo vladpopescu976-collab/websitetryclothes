@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "hero-speed-2026-05-20";
+    const siteVersion = "waitlist-2026-05-20";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -161,16 +161,53 @@
             return;
         }
 
-        form.addEventListener("submit", (event) => {
-            event.preventDefault();
-            const email = new FormData(form).get("email");
+        const status = qs("[data-waitlist-status]", form);
+        const button = qs("button[type='submit']", form);
 
-            if (!email) {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const email = formData.get("email");
+            const honey = formData.get("_honey");
+
+            if (!email || honey) {
                 return;
             }
 
-            alert("Te-am adăugat pe lista VIP. Vei primi un email curând.");
-            form.reset();
+            if (status) {
+                status.textContent = "Se trimite înscrierea...";
+            }
+
+            if (button) {
+                button.disabled = true;
+            }
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        Accept: "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Waitlist submit failed");
+                }
+
+                if (status) {
+                    status.textContent = "Gata. Te-am adăugat pe lista Private Beta.";
+                }
+                form.reset();
+            } catch (error) {
+                if (status) {
+                    status.textContent = "Nu s-a trimis. Încearcă din nou în câteva secunde.";
+                }
+            } finally {
+                if (button) {
+                    button.disabled = false;
+                }
+            }
         });
     }
 

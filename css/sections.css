@@ -465,6 +465,10 @@
     margin: 54px auto 0;
 }
 
+.waitlist-form input[name="_honey"] {
+    display: none;
+}
+
 .waitlist-form input {
     width: 100%;
     min-width: 0;
@@ -501,6 +505,22 @@
     color: #181818;
     background: var(--gold-on-dark);
     box-shadow: 0 24px 90px rgba(220, 184, 104, 0.2);
+}
+
+.button-ghost:disabled {
+    cursor: wait;
+    opacity: 0.58;
+    transform: none;
+}
+
+.form-status {
+    grid-column: 1 / -1;
+    min-height: 24px;
+    margin: -12px 0 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
 }
 
 .site-footer {
