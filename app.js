@@ -40,12 +40,12 @@
 
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
         const isTablet = window.matchMedia("(min-width: 641px) and (max-width: 1024px)").matches;
-        const timelineEnd = isMobile ? "+=950%" : isTablet ? "+=1250%" : "+=1650%";
+        const timelineEnd = isMobile ? "+=800%" : isTablet ? "+=1080%" : "+=1450%";
         const scrubValue = isMobile ? 0.35 : isTablet ? 0.7 : 1.15;
         const blurIn = isMobile ? "blur(0px)" : "blur(4px)";
         const blurOut = isMobile ? "blur(0px)" : "blur(10px)";
         const finalBlur = isMobile ? "blur(8px)" : "blur(20px)";
-        const mobileY = isMobile ? { intro: -58, float: -92, final: -112 } : { intro: -88, float: -128, final: -150 };
+        const mobileY = isMobile ? { intro: -66, float: -104, final: -122 } : { intro: -98, float: -138, final: -158 };
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -129,12 +129,12 @@
             .to(".phone-back .scan-line, #glare-back", { opacity: 0.04, duration: 1.35, ease: "none" }, 9.0)
             .to("#text-final", { opacity: 0.68, y: -18, duration: 1.2, ease: "power2.out" }, 10.5)
 
-            .to(phoneDrop, { scale: 1.4, y: mobileY.final, "--ring-opacity": 0.9, "--edge-glow": 1, "--aura-scale": 1.24, duration: 2, ease: "power2.inOut" }, 13.5)
-            .to("#text-final", { opacity: 0, y: -80, filter: blurOut, duration: 1.5, ease: "power2.in" }, 13.5)
-            .to("#transition-wash", { opacity: 1, duration: 1.5, ease: "power2.inOut" }, 14)
-            .to(phoneDrop, { opacity: 0, scale: 2, filter: finalBlur, duration: 1.5, ease: "power3.in" }, 14.5)
-            .to(".cinematic-light", { opacity: 0, duration: 1 }, 14.5)
-            .to({}, { duration: 1 });
+            .to(phoneDrop, { scale: 1.32, y: mobileY.final, "--ring-opacity": 0.86, "--edge-glow": 1, "--aura-scale": 1.18, duration: 1.05, ease: "power2.inOut" }, 12.25)
+            .to("#text-final", { opacity: 0, y: -76, filter: blurOut, duration: 0.8, ease: "power2.in" }, 12.25)
+            .to("#transition-wash", { opacity: 1, duration: 0.85, ease: "power2.inOut" }, 12.55)
+            .to(phoneDrop, { opacity: 0, scale: 1.72, filter: finalBlur, duration: 0.8, ease: "power3.in" }, 13.05)
+            .to(".cinematic-light", { opacity: 0, duration: 0.65 }, 13.05)
+            .to({}, { duration: 0.2 });
     }
 
     function initReveals() {

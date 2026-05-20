@@ -420,12 +420,12 @@
 }
 
 .story-caption-mid {
-    bottom: clamp(28px, 6vh, 70px);
+    bottom: clamp(58px, 9vh, 104px);
 }
 
 .story-caption-final {
     top: auto;
-    bottom: clamp(28px, 6vh, 70px);
+    bottom: clamp(58px, 9vh, 104px);
 }
 
 .story-caption h2 {
