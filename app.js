@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "hero-balance-2026-05-20";
+    const siteVersion = "hero-speed-2026-05-20";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -40,11 +40,11 @@
 
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
         const isTablet = window.matchMedia("(min-width: 641px) and (max-width: 1024px)").matches;
-        const timelineEnd = isMobile ? "+=800%" : isTablet ? "+=1080%" : "+=1450%";
-        const scrubValue = isMobile ? 0.35 : isTablet ? 0.7 : 1.15;
+        const timelineEnd = isMobile ? "+=640%" : isTablet ? "+=880%" : "+=1180%";
+        const scrubValue = isMobile ? 0.18 : isTablet ? 0.42 : 0.68;
         const blurIn = isMobile ? "blur(0px)" : "blur(4px)";
         const blurOut = isMobile ? "blur(0px)" : "blur(10px)";
-        const finalBlur = isMobile ? "blur(8px)" : "blur(20px)";
+        const finalBlur = isMobile ? "blur(0px)" : "blur(12px)";
         const mobileY = isMobile ? { intro: -84, float: -124, final: -146 } : { intro: -84, float: -122, final: -142 };
 
         const tl = gsap.timeline({
