@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "waitlist-2026-05-20";
+    const siteVersion = "waitlist-fix-2026-05-20";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -183,7 +183,8 @@
             }
 
             try {
-                const response = await fetch(form.action, {
+                const endpoint = form.dataset.waitlistAjax || form.action;
+                const response = await fetch(endpoint, {
                     method: "POST",
                     body: formData,
                     headers: {
@@ -193,6 +194,12 @@
 
                 if (!response.ok) {
                     throw new Error("Waitlist submit failed");
+                }
+
+                const result = await response.json().catch(() => null);
+
+                if (result && result.success === false) {
+                    throw new Error("Waitlist submit rejected");
                 }
 
                 if (status) {
