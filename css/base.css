@@ -11,9 +11,11 @@
     --line: rgba(255, 255, 255, 0.09);
     --line-strong: rgba(255, 255, 255, 0.16);
     --glass: rgba(12, 12, 12, 0.54);
-    --gold: #e8c982;
-    --gold-soft: rgba(232, 201, 130, 0.2);
-    --gold-line: rgba(232, 201, 130, 0.28);
+    --gold: #9a7428;
+    --gold-deep: #6f4f16;
+    --gold-on-dark: #c8a24e;
+    --gold-soft: rgba(154, 116, 40, 0.2);
+    --gold-line: rgba(111, 79, 22, 0.3);
     --radius-lg: 32px;
     --radius-md: 24px;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

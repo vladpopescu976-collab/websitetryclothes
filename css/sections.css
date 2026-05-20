@@ -265,7 +265,7 @@
 
 .step-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(174, 136, 54, 0.26);
+    border-color: rgba(111, 79, 22, 0.28);
     box-shadow:
         0 42px 110px rgba(24, 24, 24, 0.11),
         0 26px 90px rgba(220, 184, 104, 0.14),
@@ -348,11 +348,11 @@
 
 .faq-grid {
     display: grid;
-    border-top: 1px solid rgba(174, 136, 54, 0.28);
+    border-top: 1px solid rgba(111, 79, 22, 0.3);
 }
 
 .faq-item {
-    border-bottom: 1px solid rgba(174, 136, 54, 0.26);
+    border-bottom: 1px solid rgba(111, 79, 22, 0.28);
 }
 
 .faq-item summary {
@@ -381,7 +381,7 @@
 .faq-item summary svg {
     width: 22px;
     height: 22px;
-    color: rgba(174, 136, 54, 0.86);
+    color: var(--gold-deep);
     stroke-width: 1.45;
     transition: transform 260ms var(--ease-out);
 }
@@ -448,6 +448,10 @@
     text-shadow: 0 24px 100px rgba(220, 184, 104, 0.16);
 }
 
+.section-cta .eyebrow {
+    color: var(--gold-on-dark);
+}
+
 .cta-inner p:not(.eyebrow) {
     color: rgba(255, 255, 255, 0.68);
 }
@@ -467,7 +471,7 @@
     height: 58px;
     padding: 0;
     border: 0;
-    border-bottom: 1px solid rgba(220, 184, 104, 0.58);
+    border-bottom: 1px solid rgba(200, 162, 78, 0.7);
     outline: 0;
     color: #fff;
     background: transparent;
@@ -479,13 +483,13 @@
 }
 
 .waitlist-form input:focus {
-    border-color: #f0dca6;
+    border-color: var(--gold-on-dark);
 }
 
 .button-ghost {
     min-height: 54px;
-    border: 1px solid rgba(220, 184, 104, 0.72);
-    color: #f1dba2;
+    border: 1px solid rgba(200, 162, 78, 0.82);
+    color: var(--gold-on-dark);
     background: rgba(255, 255, 255, 0.02);
     font-size: 0.78rem;
     letter-spacing: 0.2em;
@@ -495,7 +499,7 @@
 
 .button-ghost:hover {
     color: #181818;
-    background: #f0dca6;
+    background: var(--gold-on-dark);
     box-shadow: 0 24px 90px rgba(220, 184, 104, 0.2);
 }
 

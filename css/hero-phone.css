@@ -93,7 +93,7 @@
 
 .eyebrow {
     margin: 0 0 16px;
-    color: rgba(232, 201, 130, 0.72);
+    color: var(--gold-deep);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.22em;
