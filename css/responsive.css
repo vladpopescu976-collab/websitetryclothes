@@ -310,6 +310,11 @@
         padding-top: 126px;
     }
 
+    .section-intro {
+        margin-top: -16vh;
+        padding-top: 96px;
+    }
+
     .section-heading,
     .editorial-heading,
     .cta-inner {

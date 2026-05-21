@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "web3forms-2026-05-20";
+    const siteVersion = "hero-flow-2026-05-21";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -132,9 +132,8 @@
             .to(phoneDrop, { scale: 1.32, y: mobileY.final, "--ring-opacity": 0.86, "--edge-glow": 1, "--aura-scale": 1.18, duration: 1.05, ease: "power2.inOut" }, 12.25)
             .to("#text-final", { opacity: 0, y: -76, filter: blurOut, duration: 0.8, ease: "power2.in" }, 12.25)
             .to("#transition-wash", { opacity: 1, duration: 0.85, ease: "power2.inOut" }, 12.55)
-            .to(phoneDrop, { opacity: 0, scale: 1.72, filter: finalBlur, duration: 0.8, ease: "power3.in" }, 13.05)
-            .to(".cinematic-light", { opacity: 0, duration: 0.65 }, 13.05)
-            .to({}, { duration: 0.2 });
+            .to(phoneDrop, { opacity: 0, scale: 1.72, filter: finalBlur, duration: 0.72, ease: "power3.in" }, 13.18)
+            .to(".cinematic-light", { opacity: 0, duration: 0.56 }, 13.18);
     }
 
     function initReveals() {
