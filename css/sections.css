@@ -74,13 +74,13 @@
 }
 
 .section-intro {
-    margin-top: -36vh;
-    padding-top: clamp(56px, 8vh, 86px);
+    margin-top: -48vh;
+    padding-top: clamp(34px, 5vh, 58px);
 }
 
 .section-intro::before {
-    height: 58px;
-    background: linear-gradient(180deg, rgba(253, 251, 247, 0.36), rgba(253, 251, 247, 0));
+    height: 34px;
+    background: linear-gradient(180deg, rgba(253, 251, 247, 0.22), rgba(253, 251, 247, 0));
 }
 
 .motion-fallback .section-intro {

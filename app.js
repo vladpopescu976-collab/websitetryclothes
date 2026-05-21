@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "hero-flow-aggressive-2026-05-21";
+    const siteVersion = "hero-flow-continuous-2026-05-21";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -33,6 +33,7 @@
         const phoneDrop = qs("#phone-drop-wrapper");
         const phone = qs("#phone-3d");
         const hero = qs("#scroll-master");
+        const handoffElements = qsa("#experience .gs-reveal");
 
         if (!phoneDrop || !phone || !hero) {
             return;
@@ -80,6 +81,12 @@
         gsap.set("#glare-front, #glare-back", { opacity: 1, x: 0 });
         gsap.set(".cinematic-light-left", { opacity: 0, x: -100, y: 50, scale: 0.8 });
         gsap.set(".cinematic-light-right", { opacity: 0, x: 100, y: -50, scale: 0.8 });
+        gsap.set(handoffElements, {
+            y: isMobile ? 36 : 70,
+            opacity: 0,
+            scale: 0.98,
+            filter: blurIn
+        });
 
         tl.to("#hero-text", { opacity: 0, y: -40, scale: 0.96, filter: blurOut, duration: 0.65 }, 0)
             .to(phoneDrop, {
@@ -131,6 +138,7 @@
 
             .to(phoneDrop, { scale: 1.36, y: mobileY.final, "--ring-opacity": 0.86, "--edge-glow": 1, "--aura-scale": 1.18, duration: 0.86, ease: "power2.inOut" }, 12.05)
             .to("#text-final", { opacity: 0, y: -76, filter: blurOut, duration: 0.64, ease: "power2.in" }, 12.05)
+            .to(handoffElements, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.76, stagger: 0.08, ease: "power2.out" }, 12.12)
             .to("#transition-wash", { opacity: 1, duration: 0.64, ease: "power2.inOut" }, 12.28)
             .to(phoneDrop, { opacity: 0, scale: 1.82, filter: finalBlur, duration: 0.58, ease: "power3.in" }, 12.78)
             .to(".cinematic-light", { opacity: 0, duration: 0.44 }, 12.78);
@@ -138,6 +146,10 @@
 
     function initReveals() {
         qsa(".gs-reveal").forEach((element) => {
+            if (element.closest("#experience")) {
+                return;
+            }
+
             ScrollTrigger.create({
                 trigger: element,
                 start: "top 84%",
