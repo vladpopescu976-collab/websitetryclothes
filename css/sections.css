@@ -98,7 +98,7 @@
 
 .floating-phone-stage {
     position: relative;
-    min-height: 690px;
+    min-height: 660px;
     display: grid;
     place-items: center;
     isolation: isolate;
@@ -163,11 +163,11 @@
 
 .editorial-phone-shell {
     position: relative;
-    width: 314px;
+    width: 300px;
     aspect-ratio: 1179 / 2556;
     padding: 0;
     overflow: visible;
-    border-radius: 54px;
+    border-radius: 50px;
     background:
         linear-gradient(145deg, #f7f4ec, #8d8d8d 24%, #1c1c1c 42%, #d8d3c5 63%, #4a4a4a 100%);
     box-shadow:
@@ -181,12 +181,12 @@
     position: absolute;
     inset: 0;
     z-index: 2;
-    border-radius: 54px;
+    border-radius: 50px;
     pointer-events: none;
     box-shadow:
-        inset 0 0 0 10px rgba(6, 6, 6, 0.92),
-        inset 0 0 0 13px rgba(255, 255, 255, 0.07),
-        inset 0 0 30px rgba(0, 0, 0, 0.58),
+        inset 0 0 0 8px rgba(6, 6, 6, 0.92),
+        inset 0 0 0 10px rgba(255, 255, 255, 0.07),
+        inset 0 0 26px rgba(0, 0, 0, 0.56),
         inset 16px 0 30px rgba(255, 255, 255, 0.08);
 }
 
@@ -194,10 +194,10 @@
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 18px;
+    bottom: 16px;
     z-index: 5;
-    width: 34%;
-    height: 4px;
+    width: 31%;
+    height: 3.5px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.82);
     transform: translateX(-50%);
@@ -205,21 +205,21 @@
 
 .editorial-phone-shell img {
     position: absolute;
-    inset: 13px;
-    width: calc(100% - 26px);
-    height: calc(100% - 26px);
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
     object-fit: cover;
-    border-radius: 42px;
+    border-radius: 40px;
     background: #101216;
 }
 
 .editorial-phone-island {
     position: absolute;
-    top: 22px;
+    top: 19px;
     left: 50%;
     z-index: 6;
-    width: 86px;
-    height: 25px;
+    width: 76px;
+    height: 22px;
     border-radius: 999px;
     background: #050505;
     box-shadow: inset 0 -1px 2px rgba(255, 255, 255, 0.14), 0 5px 14px rgba(0, 0, 0, 0.48);
