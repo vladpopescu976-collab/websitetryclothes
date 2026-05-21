@@ -151,6 +151,7 @@
         --aura-opacity: 0 !important;
         --ring-opacity: 0 !important;
         --edge-glow: 0.22 !important;
+        --glass-bloom: 0 !important;
     }
 
     .phone-drop::before,
@@ -179,7 +180,8 @@
     }
 
     .screen-img-muted,
-    .glare {
+    .glare,
+    .screen-mask::after {
         will-change: auto;
     }
 
@@ -311,8 +313,8 @@
     }
 
     .section-intro {
-        margin-top: -42vh;
-        padding-top: 42px;
+        margin-top: -58vh;
+        padding-top: 18px;
     }
 
     .section-heading,

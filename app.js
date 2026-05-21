@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "hero-flow-continuous-2026-05-21";
+    const siteVersion = "hero-premium-spin-2026-05-21";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -41,8 +41,8 @@
 
         const isMobile = window.matchMedia("(max-width: 640px)").matches;
         const isTablet = window.matchMedia("(min-width: 641px) and (max-width: 1024px)").matches;
-        const timelineEnd = isMobile ? "+=560%" : isTablet ? "+=760%" : "+=1020%";
-        const scrubValue = isMobile ? 0.1 : isTablet ? 0.28 : 0.46;
+        const timelineEnd = isMobile ? "+=460%" : isTablet ? "+=630%" : "+=840%";
+        const scrubValue = isMobile ? 0.06 : isTablet ? 0.16 : 0.26;
         const blurIn = isMobile ? "blur(0px)" : "blur(4px)";
         const blurOut = isMobile ? "blur(0px)" : "blur(10px)";
         const finalBlur = isMobile ? "blur(0px)" : "blur(12px)";
@@ -73,7 +73,10 @@
             "--aura-scale": 0.74,
             "--ring-opacity": 0,
             "--ring-rotation": "-24deg",
-            "--edge-glow": 0
+            "--edge-glow": 0,
+            "--metal-flare-opacity": 0,
+            "--metal-flare-x": "-145%",
+            "--glass-bloom": 0
         });
 
         gsap.set(phone, { rotationY: 0, rotationX: 0 });
@@ -112,12 +115,14 @@
             .to(".cinematic-light-right", { opacity: 0.72, x: 0, y: 0, scale: 1.12, duration: 3, ease: "power2.out" }, 0.5)
             .add(() => phoneDrop.classList.add("is-present"), 1)
 
-            .to(phone, { rotationY: 180, duration: 5, ease: "none" }, 3)
-            .to(phoneDrop, { y: mobileY.float, rotationZ: -4, rotationX: 6, duration: 2.5, ease: "none" }, 3)
-            .to(phoneDrop, { "--ring-rotation": "190deg", "--ring-opacity": 0.54, "--edge-glow": 0.92, "--aura-scale": 1.08, duration: 3.2, ease: "none" }, 3)
+            .to(phone, { rotationY: 180, rotationX: -4, duration: 4.65, ease: "none" }, 3)
+            .to(phoneDrop, { y: mobileY.float, rotationZ: -5.5, rotationX: 7.5, scale: 1.035, duration: 2.25, ease: "none" }, 3)
+            .to(phoneDrop, { "--ring-rotation": "208deg", "--ring-opacity": 0.72, "--edge-glow": 1, "--aura-scale": 1.16, "--glass-bloom": 1, duration: 2.85, ease: "none" }, 3)
+            .to(phoneDrop, { "--metal-flare-opacity": 0.95, "--metal-flare-x": "140%", duration: 1.42, ease: "none" }, 3.12)
+            .to(phoneDrop, { "--metal-flare-opacity": 0.12, "--glass-bloom": 0.25, duration: 1.05, ease: "none" }, 4.56)
             .to(".cinematic-light-left", { x: 90, y: -38, opacity: 0.9, duration: 3.2, ease: "none" }, 3)
             .to(".cinematic-light-right", { x: -70, y: 26, opacity: 0.84, duration: 3.2, ease: "none" }, 3)
-            .to(phoneDrop, { y: mobileY.intro, rotationZ: 0, rotationX: 0, duration: 2.5, ease: "none" }, 5.5)
+            .to(phoneDrop, { y: mobileY.intro, rotationZ: 0, rotationX: 0, scale: 1, duration: 2.25, ease: "none" }, 5.35)
             .to("#glare-front", { x: "100%", duration: 3, ease: "none" }, 3)
             .to("#glare-front, .phone-back .scan-line, #glare-back", { opacity: 0.04, duration: 1.35, ease: "none" }, 3.2)
             .to(".phone-back .scan-line, #glare-back", { opacity: 1, duration: 0.9, ease: "none" }, 6.15)
@@ -126,22 +131,26 @@
             .to(phoneDrop, { "--original-screen-opacity": 0, duration: 0.5, ease: "none" }, 5.0)
             .set(phoneDrop, { "--result-screen-opacity": 1 }, 6)
 
-            .to(phone, { rotationY: 360, duration: 5, ease: "none" }, 8)
-            .to(phoneDrop, { y: mobileY.float, rotationZ: 4, rotationX: -6, duration: 2.5, ease: "none" }, 8)
-            .to(phoneDrop, { "--ring-rotation": "374deg", "--ring-opacity": 0.66, "--edge-glow": 1, "--aura-opacity": 0.9, "--aura-scale": 1.16, duration: 3.2, ease: "none" }, 8)
+            .set(phoneDrop, { "--metal-flare-x": "-145%" }, 7.85)
+            .to(phone, { rotationY: 360, rotationX: 0, duration: 4.65, ease: "none" }, 7.85)
+            .to(phoneDrop, { y: mobileY.float, rotationZ: 5.5, rotationX: -7.5, scale: 1.04, duration: 2.25, ease: "none" }, 7.85)
+            .to(phoneDrop, { "--ring-rotation": "396deg", "--ring-opacity": 0.8, "--edge-glow": 1, "--aura-opacity": 0.96, "--aura-scale": 1.22, "--glass-bloom": 1, duration: 2.85, ease: "none" }, 7.85)
+            .to(phoneDrop, { "--metal-flare-opacity": 1, "--metal-flare-x": "142%", duration: 1.48, ease: "none" }, 8.02)
+            .to(phoneDrop, { "--metal-flare-opacity": 0.16, "--glass-bloom": 0.34, duration: 1.08, ease: "none" }, 9.52)
             .to(".cinematic-light-left", { x: -30, y: 34, opacity: 0.72, duration: 3.2, ease: "none" }, 8)
             .to(".cinematic-light-right", { x: 58, y: -42, opacity: 0.96, duration: 3.2, ease: "none" }, 8)
-            .to(phoneDrop, { y: mobileY.intro, rotationZ: 0, rotationX: 0, duration: 2.5, ease: "none" }, 10.5)
+            .to(phoneDrop, { y: mobileY.intro, rotationZ: 0, rotationX: 0, scale: 1, duration: 2.25, ease: "none" }, 10.2)
             .to("#glare-back", { x: "100%", duration: 3, ease: "none" }, 8)
             .to(".phone-back .scan-line, #glare-back", { opacity: 0.04, duration: 1.35, ease: "none" }, 9.0)
-            .to("#text-final", { opacity: 0.68, y: -18, duration: 1.2, ease: "power2.out" }, 10.5)
+            .to("#text-final", { opacity: 0.72, y: -18, duration: 1.05, ease: "power2.out" }, 10.35)
 
-            .to(phoneDrop, { scale: 1.36, y: mobileY.final, "--ring-opacity": 0.86, "--edge-glow": 1, "--aura-scale": 1.18, duration: 0.86, ease: "power2.inOut" }, 12.05)
-            .to("#text-final", { opacity: 0, y: -76, filter: blurOut, duration: 0.64, ease: "power2.in" }, 12.05)
-            .to(handoffElements, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.76, stagger: 0.08, ease: "power2.out" }, 12.12)
-            .to("#transition-wash", { opacity: 1, duration: 0.64, ease: "power2.inOut" }, 12.28)
-            .to(phoneDrop, { opacity: 0, scale: 1.82, filter: finalBlur, duration: 0.58, ease: "power3.in" }, 12.78)
-            .to(".cinematic-light", { opacity: 0, duration: 0.44 }, 12.78);
+            .set(phoneDrop, { "--metal-flare-x": "-125%" }, 11.58)
+            .to(phoneDrop, { scale: 1.58, y: mobileY.final, "--ring-opacity": 0.98, "--edge-glow": 1, "--aura-scale": 1.34, "--glass-bloom": 1, "--metal-flare-opacity": 0.9, "--metal-flare-x": "126%", duration: 0.62, ease: "power2.inOut" }, 11.52)
+            .to("#text-final", { opacity: 0, y: -82, filter: blurOut, duration: 0.48, ease: "power2.in" }, 11.52)
+            .to(handoffElements, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.62, stagger: 0.06, ease: "power2.out" }, 11.56)
+            .to("#transition-wash", { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 11.74)
+            .to(phoneDrop, { opacity: 0, scale: 2.18, filter: finalBlur, "--metal-flare-opacity": 0, duration: 0.38, ease: "power3.in" }, 12.08)
+            .to(".cinematic-light", { opacity: 0, duration: 0.28 }, 12.08);
     }
 
     function initReveals() {
