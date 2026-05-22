@@ -320,6 +320,11 @@
     .section-intro {
         margin-top: -104vh;
         padding-top: 18px;
+        padding-bottom: 34px;
+    }
+
+    .section-steps {
+        padding-top: 66px;
     }
 
     .section-heading,
@@ -342,7 +347,11 @@
     }
 
     .floating-phone-stage {
-        min-height: 450px;
+        min-height: 360px;
+    }
+
+    .floating-phone-stage::after {
+        display: none;
     }
 
     .editorial-phone-shell {
@@ -382,13 +391,13 @@
 
     .editorial-phone-result {
         left: 3%;
-        top: 8px;
+        top: 0;
         transform: rotate(-5deg);
     }
 
     .editorial-phone-fit {
         right: 3%;
-        bottom: 10px;
+        bottom: 0;
         transform: rotate(5deg);
     }
 
