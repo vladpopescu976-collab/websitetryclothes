@@ -2,7 +2,7 @@
 .hero-shell {
     position: relative;
     width: 100%;
-    height: var(--hero-scroll-height, 100vh);
+    height: var(--hero-scroll-height, 940vh);
     background: var(--cream);
     overflow: visible;
 }

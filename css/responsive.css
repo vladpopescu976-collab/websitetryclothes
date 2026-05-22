@@ -57,6 +57,10 @@
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
+    .hero-shell {
+        height: var(--hero-scroll-height, 730vh);
+    }
+
     .hero-bg {
         background-image:
             image-set(
@@ -77,6 +81,10 @@
 }
 
 @media (max-width: 640px) {
+    .hero-shell {
+        height: var(--hero-scroll-height, 560vh);
+    }
+
     .site-nav {
         top: 10px;
         width: min(calc(100% - 20px), var(--max));
@@ -429,6 +437,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .hero-shell {
+        height: 100vh;
+    }
+
     *,
     *::before,
     *::after {
