@@ -2,7 +2,7 @@
 .hero-shell {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: var(--hero-scroll-height, 100vh);
     background: var(--cream);
     overflow: hidden;
 }
@@ -45,7 +45,11 @@
 }
 
 .hero-bg {
-    background-image: url("../assets/hero-bg-bw.jpg");
+    background-image:
+        image-set(
+            url("../assets/hero-bg-bw-1920.webp") type("image/webp"),
+            url("../assets/hero-bg-bw.jpg") type("image/jpeg")
+        );
     background-size: cover;
     background-position: center center;
     background-attachment: scroll;
@@ -177,6 +181,7 @@
     opacity: 0;
     transform-style: preserve-3d;
     will-change: transform, opacity, filter;
+    transform: translate3d(0, -100vh, 0) rotateZ(12deg) rotateX(15deg) scale(0.8);
     --original-screen-opacity: 0.82;
     --result-screen-opacity: 0;
     --aura-opacity: 0;
@@ -234,6 +239,7 @@
     height: 540px;
     transform-style: preserve-3d;
     will-change: transform;
+    transform: rotateY(0deg);
 }
 
 .phone-3d-wrapper::before {

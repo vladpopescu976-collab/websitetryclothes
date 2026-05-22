@@ -7,6 +7,8 @@
     padding: 136px 24px;
     background: var(--cream);
     color: var(--onyx);
+    content-visibility: auto;
+    contain-intrinsic-size: 980px;
 }
 
 .section::before,
@@ -580,6 +582,8 @@
     background:
         linear-gradient(180deg, #fdfbf7 0%, #f5efe5 100%);
     color: var(--onyx);
+    content-visibility: auto;
+    contain-intrinsic-size: 160px;
 }
 
 .footer-inner {

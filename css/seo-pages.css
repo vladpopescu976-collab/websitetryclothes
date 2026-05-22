@@ -13,6 +13,8 @@
 .seo-section {
     position: relative;
     padding: clamp(76px, 9vw, 132px) 24px;
+    content-visibility: auto;
+    contain-intrinsic-size: 820px;
 }
 
 .seo-section-dark {
@@ -227,8 +229,8 @@
     border-radius: 26px;
 }
 
-.seo-card i,
-.seo-panel i {
+.seo-card svg,
+.seo-panel svg {
     width: 26px;
     height: 26px;
     margin-bottom: 30px;
@@ -474,7 +476,7 @@
     padding: 34px;
 }
 
-.contact-card i {
+.contact-card svg {
     width: 34px;
     height: 34px;
     color: var(--gold);

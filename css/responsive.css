@@ -58,7 +58,11 @@
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .hero-bg {
-        background-image: url("../assets/hero-bg-tablet-bw.jpg");
+        background-image:
+            image-set(
+                url("../assets/hero-bg-tablet-bw-980.webp") type("image/webp"),
+                url("../assets/hero-bg-tablet-bw.jpg") type("image/jpeg")
+            );
         background-size: cover;
         background-position: center center;
         background-attachment: scroll;
@@ -130,7 +134,11 @@
     }
 
     .hero-bg {
-        background-image: url("../assets/hero-bg-bw.jpg");
+        background-image:
+            image-set(
+                url("../assets/hero-bg-mobile-bw-640.webp") type("image/webp"),
+                url("../assets/hero-bg-mobile-bw.jpg") type("image/jpeg")
+            );
         background-size: auto 100%;
         background-position: 70% center;
         background-attachment: scroll;
