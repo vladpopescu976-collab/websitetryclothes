@@ -229,7 +229,7 @@
         padding-inline: 18px;
     }
 
-    .waitlist-form input,
+    .waitlist-form input[type="email"],
     .waitlist-form .button {
         width: 100%;
     }

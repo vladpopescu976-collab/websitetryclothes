@@ -473,6 +473,10 @@
 .waitlist-form {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "email button"
+        "consent consent"
+        "status status";
     align-items: end;
     gap: 30px;
     width: min(650px, 100%);
@@ -483,7 +487,8 @@
     display: none;
 }
 
-.waitlist-form input {
+.waitlist-form input[type="email"] {
+    grid-area: email;
     width: 100%;
     min-width: 0;
     height: 58px;
@@ -496,12 +501,42 @@
     border-radius: 0;
 }
 
-.waitlist-form input::placeholder {
+.waitlist-form input[type="email"]::placeholder {
     color: rgba(255, 255, 255, 0.42);
 }
 
-.waitlist-form input:focus {
+.waitlist-form input[type="email"]:focus {
     border-color: var(--gold-on-dark);
+}
+
+.waitlist-form .button {
+    grid-area: button;
+}
+
+.consent-row {
+    grid-area: consent;
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 12px;
+    align-items: start;
+    margin-top: -8px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 0.82rem;
+    line-height: 1.58;
+    text-align: left;
+}
+
+.consent-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 3px 0 0;
+    accent-color: var(--gold-on-dark);
+}
+
+.consent-row a {
+    color: var(--gold-on-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 .button-ghost {
@@ -528,7 +563,7 @@
 }
 
 .form-status {
-    grid-column: 1 / -1;
+    grid-area: status;
     min-height: 24px;
     margin: -12px 0 0;
     color: rgba(255, 255, 255, 0.7);
@@ -570,6 +605,8 @@
 .footer-links {
     justify-self: end;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 22px;
 }
 

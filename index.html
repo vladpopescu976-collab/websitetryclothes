@@ -33,7 +33,7 @@
     <link rel="icon" href="/favicon.ico?v=20260522tabfix" sizes="any">
     <link rel="icon" type="image/png" href="./assets/favicon.png?v=20260522tabfix">
     <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png?v=20260522tabfix">
-    <link rel="stylesheet" href="./styles.css?v=20260522seopages">
+    <link rel="stylesheet" href="./styles.css?v=20260522legal">
     <link rel="preload" as="image" href="./assets/app-home.jpg">
     <link rel="preload" as="image" href="./assets/app-fit-profile.jpg">
     <link rel="preload" as="image" href="./assets/app-outfit-result.jpg">
@@ -42,7 +42,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="./app.js?v=20260521premiumspin" defer></script>
+    <script src="./app.js?v=20260522legal" defer></script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -342,11 +342,16 @@
                     <label class="sr-only" for="waitlist-email">Email</label>
                     <input id="waitlist-email" type="email" name="email" placeholder="Adresa ta de email" required autocomplete="email">
                     <input type="hidden" name="access_key" value="20f0039c-480a-48e0-9cae-6450ee44dde2">
-                    <input type="hidden" name="subject" value="Înscriere nouă TryClothes Private Beta">
+                    <input type="hidden" name="subject" value="Înscriere nouă TryClothes">
                     <input type="hidden" name="from_name" value="TryClothes Website">
                     <input type="hidden" name="redirect" value="https://try-clothes.com/?beta=success#download">
+                    <input type="hidden" name="consent_context" value="Utilizatorul a bifat consimțământul pentru emailuri despre accesul TryClothes și a acceptat politica de confidențialitate.">
                     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
                     <button class="button button-ghost" type="submit">Vreau să probez</button>
+                    <label class="consent-row" for="privacy-consent">
+                        <input id="privacy-consent" type="checkbox" name="privacy_consent" value="accepted" required>
+                        <span>Sunt de acord să fiu contactat pe email pentru acces TryClothes și am citit <a href="./privacy/">Politica de confidențialitate</a>.</span>
+                    </label>
                     <p class="form-status" data-waitlist-status aria-live="polite"></p>
                 </form>
             </div>
@@ -364,6 +369,10 @@
                 <a href="./probeaza-haine-online/">Probează haine</a>
                 <a href="./proba-virtuala-haine/">Probă virtuală</a>
                 <a href="./ai-clothes-try-on/">AI try-on</a>
+                <a href="./privacy/">Confidențialitate</a>
+                <a href="./terms/">Termeni</a>
+                <a href="./cookies/">Cookies</a>
+                <a href="./contact/">Contact</a>
             </div>
         </div>
     </footer>

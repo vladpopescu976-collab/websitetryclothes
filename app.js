@@ -183,6 +183,7 @@
 
         const status = qs("[data-waitlist-status]", form);
         const button = qs("button[type='submit']", form);
+        const privacyConsent = qs("input[name='privacy_consent']", form);
 
         form.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -191,6 +192,14 @@
             const botcheck = formData.get("botcheck");
 
             if (!email || botcheck) {
+                return;
+            }
+
+            if (privacyConsent && !privacyConsent.checked) {
+                if (status) {
+                    status.textContent = "Bifează acordul de confidențialitate pentru a te înscrie.";
+                }
+                privacyConsent.focus();
                 return;
             }
 
@@ -222,7 +231,7 @@
                 }
 
                 if (status) {
-                    status.textContent = "Gata. Te-am adăugat pe lista Private Beta.";
+                    status.textContent = "Gata. Te-am adăugat pe listă.";
                 }
                 form.reset();
             } catch (error) {
