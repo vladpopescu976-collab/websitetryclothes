@@ -25,6 +25,24 @@
         <priority>0.85</priority>
     </url>
     <url>
+        <loc>https://try-clothes.com/virtual-fitting-room/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://try-clothes.com/how-it-works/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://try-clothes.com/reduce-clothing-returns/</loc>
+        <lastmod>2026-05-22</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://try-clothes.com/privacy/</loc>
         <lastmod>2026-05-22</lastmod>
         <changefreq>monthly</changefreq>
