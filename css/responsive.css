@@ -67,7 +67,6 @@
         background-position: center center;
         background-attachment: scroll;
         opacity: 0.32;
-        filter: grayscale(1) brightness(1.08) contrast(0.92);
     }
 }
 
@@ -143,12 +142,10 @@
         background-position: 70% center;
         background-attachment: scroll;
         opacity: 0.34;
-        filter: grayscale(1) brightness(1.08) contrast(0.92);
     }
 
     .hero-shell::before {
         opacity: 0.58;
-        filter: blur(18px);
     }
 
     .cinematic-light {

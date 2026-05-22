@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "native-performance-2026-05-22";
+    const siteVersion = "desktop-performance-2026-05-22";
 
     const state = {
         reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -10,6 +10,7 @@
     document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.dataset.tryclothesSite = siteVersion;
         createIcons();
+        initDeferredImages();
         initWaitlist();
 
         if (state.reducedMotion) {
@@ -25,6 +26,32 @@
 
     function createIcons() {
         window.TryClothesIcons?.createIcons();
+    }
+
+    function initDeferredImages() {
+        const images = qsa("img[data-defer-src]");
+
+        if (!images.length) {
+            return;
+        }
+
+        let loaded = false;
+        const loadImages = () => {
+            if (loaded) {
+                return;
+            }
+            loaded = true;
+            images.forEach((image) => {
+                image.src = image.dataset.deferSrc;
+                image.removeAttribute("data-defer-src");
+            });
+        };
+
+        window.addEventListener("scroll", loadImages, { once: true, passive: true });
+        window.addEventListener("pointerdown", loadImages, { once: true, passive: true });
+        window.addEventListener("load", () => {
+            window.setTimeout(loadImages, 2600);
+        }, { once: true });
     }
 
     function clamp(value, min = 0, max = 1) {

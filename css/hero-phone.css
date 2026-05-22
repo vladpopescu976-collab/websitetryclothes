@@ -23,7 +23,6 @@
         radial-gradient(ellipse at 22% 42%, rgba(232, 201, 130, 0.24), transparent 42%),
         radial-gradient(ellipse at 74% 18%, rgba(118, 164, 255, 0.12), transparent 48%),
         linear-gradient(105deg, transparent 12%, rgba(255, 255, 255, 0.48) 48%, transparent 72%);
-    filter: blur(42px);
     transform: rotate(-5deg);
 }
 
@@ -54,7 +53,6 @@
     background-position: center center;
     background-attachment: scroll;
     opacity: 0.34;
-    filter: grayscale(1) brightness(1.08) contrast(0.92);
 }
 
 .hero-overlay {
@@ -157,7 +155,6 @@
     border-radius: 999px;
     opacity: 0;
     pointer-events: none;
-    filter: blur(74px);
     mix-blend-mode: multiply;
     will-change: transform, opacity;
 }
@@ -279,7 +276,9 @@
     border: 2px solid #3d3d3d;
     border-radius: 46px;
     background-color: #111;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.25'/%3E%3C/svg%3E");
+    background-image:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent 18%, transparent 82%, rgba(255, 255, 255, 0.06)),
+        linear-gradient(180deg, #181818, #0d0d0d 48%, #1b1b1b);
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 1);
     pointer-events: none;
     transform-style: preserve-3d;

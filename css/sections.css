@@ -118,7 +118,6 @@
     background:
         radial-gradient(circle at 35% 36%, rgba(220, 184, 104, 0.16), transparent 50%),
         radial-gradient(circle at 66% 58%, rgba(24, 24, 24, 0.06), transparent 58%);
-    filter: blur(42px);
     transform: translate(-50%, -50%);
 }
 
@@ -132,7 +131,6 @@
     height: 34px;
     border-radius: 999px;
     background: rgba(24, 24, 24, 0.13);
-    filter: blur(20px);
     transform: translateX(-50%);
 }
 
