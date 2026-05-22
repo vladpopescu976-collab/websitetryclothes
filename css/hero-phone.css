@@ -4,7 +4,7 @@
     width: 100%;
     height: var(--hero-scroll-height, 100vh);
     background: var(--cream);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .hero-shell::before,
