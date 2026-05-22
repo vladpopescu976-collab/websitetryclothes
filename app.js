@@ -120,9 +120,9 @@
             const firstSpin = smoothstep(0.22, 0.5, progress);
             const secondSpin = smoothstep(0.55, 0.82, progress);
             const spinPulse = Math.max(pulse(0.22, 0.36, 0.5, progress), pulse(0.55, 0.68, 0.82, progress));
-            const zoom = smoothstep(0.84, 0.94, progress);
-            const fadeOut = smoothstep(0.91, 0.98, progress);
-            const handoff = smoothstep(0.84, 0.93, progress);
+            const zoom = smoothstep(0.82, 0.91, progress);
+            const fadeOut = smoothstep(0.88, 0.95, progress);
+            const handoff = smoothstep(0.8, 0.9, progress);
             const midOpacity = 0.68 * pulse(0.31, 0.38, 0.5, progress);
             const finalOpacity = 0.72 * pulse(0.72, 0.8, 0.9, progress);
             const rotationY = progress < 0.52 ? lerp(0, 180, firstSpin) : lerp(180, 360, secondSpin);
