@@ -177,7 +177,7 @@
     margin: 4.75rem auto 0;
     opacity: 0;
     transform-style: preserve-3d;
-    will-change: transform, opacity, filter;
+    will-change: transform, opacity;
     transform: translate3d(0, -100vh, 0) rotateZ(12deg) rotateX(15deg) scale(0.8);
     --original-screen-opacity: 0.82;
     --result-screen-opacity: 0;
@@ -202,9 +202,9 @@
     background:
         radial-gradient(ellipse at 46% 42%, rgba(232, 201, 130, 0.28), transparent 46%),
         radial-gradient(ellipse at 62% 54%, rgba(118, 164, 255, 0.1), transparent 54%);
-    filter: blur(46px);
+    filter: blur(36px);
     transform: scale(var(--aura-scale)) translateZ(-36px);
-    transition: opacity 1000ms ease, transform 1000ms ease;
+    transition: opacity 140ms linear, transform 140ms linear;
 }
 
 .phone-drop::after {
@@ -437,6 +437,11 @@
     pointer-events: none;
     background: linear-gradient(45deg, transparent 38%, rgba(255, 255, 255, 0.24) 48%, rgba(232, 201, 130, 0.16) 52%, transparent 63%);
     transform: translateX(-100%) rotate(25deg);
+}
+
+.is-chromium .cinematic-light,
+.is-chromium .glare {
+    display: none;
 }
 
 .story-caption {

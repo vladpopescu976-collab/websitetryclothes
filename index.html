@@ -31,10 +31,10 @@
     <link rel="icon" type="image/png" href="/favicon-48x48.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preload" as="image" href="./assets/hero-bg-bw-1920.webp" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="./styles.bundle.css?v=20260523faqphones">
+    <link rel="stylesheet" href="./styles.bundle.css?v=20260523snappy">
 
     <script src="./icons.js?v=20260523tbt6" defer></script>
-    <script src="./app.js?v=20260523tbt6" defer></script>
+    <script src="./app.js?v=20260523snappy" defer></script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -156,21 +156,21 @@
     </script>
 </head>
 <body>
-    <nav class="site-nav" aria-label="Navigație principală">
-        <a class="brand-lockup" href="#scroll-master" aria-label="TryClothes home">
+    <nav class="site-nav" aria-label="Navigație principală" data-i18n-aria-label="nav.aria">
+        <a class="brand-lockup" href="#scroll-master" aria-label="TryClothes home" data-i18n-aria-label="nav.homeAria">
             <img src="./assets/logo-160.webp?v=20260522perf" alt="TryClothes logo - probă haine" class="brand-logo" width="42" height="42">
             <span>TryClothes</span>
         </a>
 
         <div class="nav-actions">
-            <a class="nav-link" href="#experience">Haine</a>
-            <a class="nav-link" href="#how-it-works">Cum funcționează</a>
-            <a class="button button-primary button-small" href="#download">Înscrie-te</a>
+            <a class="nav-link" href="#experience" data-i18n="nav.clothes">Haine</a>
+            <a class="nav-link" href="#how-it-works" data-i18n="nav.how">Cum funcționează</a>
+            <a class="button button-primary button-small" href="#download" data-i18n="nav.signup">Înscrie-te</a>
         </div>
     </nav>
 
     <main>
-        <section id="scroll-master" class="hero-shell" aria-label="Prezentare TryClothes">
+        <section id="scroll-master" class="hero-shell" aria-label="Prezentare TryClothes" data-i18n-aria-label="hero.aria">
             <div class="hero-bg" aria-hidden="true"></div>
             <div class="hero-overlay" aria-hidden="true"></div>
 
@@ -180,10 +180,10 @@
 
                 <div id="hero-text" class="hero-copy">
                     <p class="eyebrow">TryClothes</p>
-                    <h1>TryClothes: probează haine online.</h1>
-                    <p class="hero-subtitle">TryClothes este cabina ta de probă virtuală pentru haine. Vezi cum îți vin înainte să cumperi.</p>
+                    <h1 data-i18n="hero.title">TryClothes: probează haine online.</h1>
+                    <p class="hero-subtitle" data-i18n="hero.subtitle">TryClothes este cabina ta de probă virtuală pentru haine. Vezi cum îți vin înainte să cumperi.</p>
                     <div class="scroll-cue" aria-hidden="true">
-                        <span>Dă scroll</span>
+                        <span data-i18n="hero.scroll">Dă scroll</span>
                         <i data-lucide="chevron-down"></i>
                     </div>
                 </div>
@@ -236,15 +236,15 @@
                 </div>
 
                 <div id="text-mid" class="story-caption story-caption-mid">
-                    <p class="eyebrow">Virtual fitting room</p>
-                    <h2>Probă realistă, nu filtru.</h2>
-                    <p>Aplicatia analizează haine, pliuri, lumină și forma corpului.</p>
+                    <p class="eyebrow" data-i18n="story.midEyebrow">Probă virtuală</p>
+                    <h2 data-i18n="story.midTitle">Probă realistă, nu filtru.</h2>
+                    <p data-i18n="story.midText">Aplicația analizează haine, pliuri, lumină și forma corpului.</p>
                 </div>
 
                 <div id="text-final" class="story-caption story-caption-final">
-                    <p class="eyebrow">Try-on ready</p>
-                    <h2>Probează înainte să cumperi.</h2>
-                    <p>Ținute testate virtual, pregătite pentru garderoba ta.</p>
+                    <p class="eyebrow" data-i18n="story.finalEyebrow">Rezultat pregătit</p>
+                    <h2 data-i18n="story.finalTitle">Probează înainte să cumperi.</h2>
+                    <p data-i18n="story.finalText">Ținute testate virtual, pregătite pentru garderoba ta.</p>
                 </div>
 
                 <div id="transition-wash" class="transition-wash" aria-hidden="true"></div>
@@ -254,9 +254,9 @@
         <section id="experience" class="section section-intro section-light">
             <div class="section-inner experience-layout">
                 <div class="section-heading editorial-heading gs-reveal">
-                    <p class="eyebrow">Probă haine virtuală</p>
-                    <h2>Probă realistă, nu filtru.</h2>
-                    <p>TryClothes păstrează textura, lumina și proporțiile ținutei, ca să poți proba haine online cu încrederea unei cabine reale.</p>
+                    <p class="eyebrow" data-i18n="experience.eyebrow">Probă haine virtuală</p>
+                    <h2 data-i18n="experience.title">Probă realistă, nu filtru.</h2>
+                    <p data-i18n="experience.text">TryClothes păstrează textura, lumina și proporțiile ținutei, ca să poți proba haine online cu încrederea unei cabine reale.</p>
                 </div>
 
                 <div class="floating-phone-stage gs-reveal" aria-label="Preview-uri TryClothes în mockup-uri iPhone">
@@ -265,7 +265,7 @@
                             <div class="editorial-phone-island" aria-hidden="true"></div>
                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-defer-src="./assets/app-outfit-result-520.webp" alt="Outfit result TryClothes pe iPhone" width="520" height="1129" loading="lazy" decoding="async">
                         </div>
-                        <span>Outfit result</span>
+                        <span data-i18n="experience.resultLabel">Rezultat outfit</span>
                     </article>
 
                     <article class="editorial-phone editorial-phone-fit">
@@ -273,7 +273,7 @@
                             <div class="editorial-phone-island" aria-hidden="true"></div>
                             <img src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" data-defer-src="./assets/app-fit-profile-520.webp" alt="Fit profile TryClothes pe iPhone" width="520" height="1129" loading="lazy" decoding="async">
                         </div>
-                        <span>Fit profile</span>
+                        <span data-i18n="experience.fitLabel">Profil fit</span>
                     </article>
                 </div>
             </div>
@@ -282,31 +282,31 @@
         <section id="how-it-works" class="section section-steps">
             <div class="section-inner">
                 <div class="steps-heading gs-reveal">
-                    <p class="eyebrow">Cum funcționează</p>
-                    <h2>Trei pași pentru o probă virtuală premium.</h2>
-                    <p>Un flux gândit pentru shopping online fără ghicit: încarci, alegi, compari și păstrezi doar hainele care arată bine pe tine.</p>
+                    <p class="eyebrow" data-i18n="steps.eyebrow">Cum funcționează</p>
+                    <h2 data-i18n="steps.title">Trei pași pentru o probă virtuală premium.</h2>
+                    <p data-i18n="steps.text">Un flux gândit pentru shopping online fără ghicit: încarci, alegi, compari și păstrezi doar hainele care arată bine pe tine.</p>
                 </div>
 
-                <div class="steps-grid" aria-label="Pașii principali TryClothes">
+                <div class="steps-grid" aria-label="Pașii principali TryClothes" data-i18n-aria-label="steps.aria">
                     <article class="step-card gs-reveal">
                         <span class="step-ghost">01</span>
                         <div class="step-icon"><i data-lucide="image-up"></i></div>
-                        <h3>Încarci o poză cu tine.</h3>
-                        <p>Alegi o imagine clară sau un look salvat, iar TryClothes pregătește corpul și lumina pentru proba virtuală.</p>
+                        <h3 data-i18n="steps.oneTitle">Încarci o poză cu tine.</h3>
+                        <p data-i18n="steps.oneText">Alegi o imagine clară sau un look salvat, iar TryClothes pregătește corpul și lumina pentru proba virtuală.</p>
                     </article>
 
                     <article class="step-card gs-reveal">
                         <span class="step-ghost">02</span>
                         <div class="step-icon"><i data-lucide="shirt"></i></div>
-                        <h3>Selectezi haina dorită.</h3>
-                        <p>Poți testa haine din magazine online, screenshots sau articole vestimentare salvate în garderoba ta digitală.</p>
+                        <h3 data-i18n="steps.twoTitle">Selectezi haina dorită.</h3>
+                        <p data-i18n="steps.twoText">Poți testa haine din magazine online, screenshots sau articole vestimentare salvate în garderoba ta digitală.</p>
                     </article>
 
                     <article class="step-card gs-reveal">
                         <span class="step-ghost">03</span>
                         <div class="step-icon"><i data-lucide="sparkles"></i></div>
-                        <h3>Compari rezultatul.</h3>
-                        <p>Vezi rapid outfit-ul pe corp, compari variantele și alegi doar ținutele care merită comandate.</p>
+                        <h3 data-i18n="steps.threeTitle">Compari rezultatul.</h3>
+                        <p data-i18n="steps.threeText">Vezi rapid outfit-ul pe corp, compari variantele și alegi doar ținutele care merită comandate.</p>
                     </article>
                 </div>
             </div>
@@ -315,8 +315,8 @@
         <section id="faq" class="section section-faq">
             <div class="section-inner faq-layout">
                 <div class="section-heading faq-heading gs-reveal">
-                    <p class="eyebrow">Întrebări frecvente</p>
-                    <h2>Tot ce trebuie să știi despre proba virtuală de haine.</h2>
+                    <p class="eyebrow" data-i18n="faq.eyebrow">Întrebări frecvente</p>
+                    <h2 data-i18n="faq.title">Tot ce trebuie să știi despre proba virtuală de haine.</h2>
                 </div>
 
                 <div class="faq-language-stack">
@@ -357,7 +357,7 @@
                         </div>
                     </div>
 
-                    <div class="faq-language-block" lang="en">
+                    <div class="faq-language-block" lang="en" hidden>
                         <h3 class="faq-language-title">English</h3>
                         <div class="faq-grid">
                             <details class="faq-item gs-reveal">
@@ -400,23 +400,23 @@
         <section id="download" class="section section-cta">
             <div class="cta-glow" aria-hidden="true"></div>
             <div class="section-inner cta-inner gs-reveal">
-                <p class="eyebrow">Private beta</p>
-                <h2>Probează haine înaintea tuturor.</h2>
-                <p>Locurile sunt limitate. Intră pe lista și primești acces la TryClothes înainte de lansare.</p>
+                <p class="eyebrow" data-i18n="cta.eyebrow">Acces privat</p>
+                <h2 data-i18n="cta.title">Probează haine înaintea tuturor.</h2>
+                <p data-i18n="cta.text">Locurile sunt limitate. Intră pe lista și primești acces la TryClothes înainte de lansare.</p>
 
                 <form class="waitlist-form" action="https://api.web3forms.com/submit" method="POST" data-waitlist-form>
                     <label class="sr-only" for="waitlist-email">Email</label>
-                    <input id="waitlist-email" type="email" name="email" placeholder="Adresa ta de email" required autocomplete="email">
+                    <input id="waitlist-email" type="email" name="email" placeholder="Adresa ta de email" data-i18n-placeholder="form.emailPlaceholder" required autocomplete="email">
                     <input type="hidden" name="access_key" value="20f0039c-480a-48e0-9cae-6450ee44dde2">
-                    <input type="hidden" name="subject" value="Înscriere nouă TryClothes">
+                    <input type="hidden" name="subject" value="Înscriere nouă TryClothes" data-i18n-value="form.subject">
                     <input type="hidden" name="from_name" value="TryClothes Website">
                     <input type="hidden" name="redirect" value="https://try-clothes.com/?beta=success#download">
                     <input type="hidden" name="consent_context" value="Utilizatorul a bifat consimțământul pentru emailuri despre accesul TryClothes și a acceptat politica de confidențialitate.">
                     <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
-                    <button class="button button-ghost" type="submit">Vreau să probez</button>
+                    <button class="button button-ghost" type="submit" data-i18n="form.button">Vreau să probez</button>
                     <label class="consent-row" for="privacy-consent">
                         <input id="privacy-consent" type="checkbox" name="privacy_consent" value="accepted" required>
-                        <span>Sunt de acord să fiu contactat pe email pentru acces TryClothes și am citit <a href="./privacy/">Politica de confidențialitate</a>.</span>
+                        <span data-i18n-html="form.consent">Sunt de acord să fiu contactat pe email pentru acces TryClothes și am citit <a href="./privacy/">Politica de confidențialitate</a>.</span>
                     </label>
                     <p class="form-status" data-waitlist-status aria-live="polite"></p>
                 </form>
@@ -430,20 +430,26 @@
                 <img src="./assets/logo-160.webp?v=20260522perf" alt="TryClothes logo pentru aplicația de probă virtuală haine" class="brand-logo brand-logo-small" width="34" height="34">
                 <span>TryClothes</span>
             </a>
-            <p>© 2026 TryClothes. AI clothes try-on pentru haine, ținute și probă virtuală.</p>
+            <p data-i18n="footer.copy">© 2026 TryClothes. Probă virtuală AI pentru haine, ținute și cumpărături online.</p>
             <div class="footer-links">
-                <a href="./probeaza-haine-online/">Probează haine</a>
-                <a href="./proba-virtuala-haine/">Probă virtuală</a>
-                <a href="./ai-clothes-try-on/">AI try-on</a>
-                <a href="./virtual-fitting-room/">Virtual fitting room</a>
-                <a href="./how-it-works/">How it works</a>
-                <a href="./reduce-clothing-returns/">Reduce returns</a>
-                <a href="./privacy/">Confidențialitate</a>
-                <a href="./terms/">Termeni</a>
+                <a href="./probeaza-haine-online/" data-i18n="footer.tryClothes">Probează haine</a>
+                <a href="./proba-virtuala-haine/" data-i18n="footer.virtualTryOn">Probă virtuală</a>
+                <a href="./ai-clothes-try-on/" data-i18n="footer.aiTryOn">Probă AI</a>
+                <a href="./virtual-fitting-room/" data-i18n="footer.fittingRoom">Cabină virtuală</a>
+                <a href="./how-it-works/" data-i18n="footer.how">Cum funcționează</a>
+                <a href="./reduce-clothing-returns/" data-i18n="footer.returns">Reducerea retururilor</a>
+                <a href="./privacy/" data-i18n="footer.privacy">Confidențialitate</a>
+                <a href="./terms/" data-i18n="footer.terms">Termeni</a>
                 <a href="./cookies/">Cookies</a>
                 <a href="./contact/">Contact</a>
             </div>
         </div>
     </footer>
+
+    <div class="language-switcher" data-language-switcher aria-label="Alege limba site-ului" data-i18n-aria-label="language.aria">
+        <span class="language-switcher-label" data-i18n="language.label">Limbă</span>
+        <button type="button" data-language-option="ro" aria-pressed="true">RO</button>
+        <button type="button" data-language-option="en" aria-pressed="false">EN</button>
+    </div>
 </body>
 </html>

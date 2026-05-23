@@ -113,6 +113,17 @@
         font-size: 0.8rem;
     }
 
+    .language-switcher {
+        right: auto;
+        left: 50%;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+    }
+
+    .language-switcher-label {
+        display: none;
+    }
+
     .hero-stage {
         padding-top: 78px;
     }
