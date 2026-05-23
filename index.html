@@ -31,127 +31,126 @@
     <link rel="icon" type="image/png" href="/favicon-48x48.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="preload" as="image" href="./assets/hero-bg-bw-1920.webp" type="image/webp" fetchpriority="high">
-    <link rel="stylesheet" href="./styles.bundle.css?v=20260523anpccompact">
+    <link rel="stylesheet" href="./styles.bundle.css?v=20260524aboutbrand">
 
     <script src="./icons.js?v=20260523tbt6" defer></script>
-    <script src="./app.js?v=20260523anpccompact" defer></script>
+    <script src="./app.js?v=20260524aboutbrand" defer></script>
     <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
-            "@graph": [
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://try-clothes.com/#organization",
+              "name": "TryClothes",
+              "url": "https://try-clothes.com",
+              "logo": "https://try-clothes.com/logo.png",
+              "description": "TryClothes construiește o experiență premium de probă virtuală pentru haine.",
+              "sameAs": [
+                "https://www.instagram.com/tryclothes_/"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://try-clothes.com/#website",
+              "url": "https://try-clothes.com",
+              "name": "TryClothes",
+              "publisher": {
+                "@id": "https://try-clothes.com/#organization"
+              },
+              "inLanguage": "ro-RO"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://try-clothes.com/#app",
+              "name": "TryClothes",
+              "applicationCategory": "LifestyleApplication",
+              "operatingSystem": "iOS",
+              "url": "https://try-clothes.com",
+              "image": "https://try-clothes.com/og-image.png",
+              "description": "Aplicație pentru proba virtuală de haine: probează haine online, înainte să cumperi.",
+              "keywords": "clothes, haine, proba haine, probează haine, probă virtuală, AI clothes try-on, haine online",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/PreOrder"
+              },
+              "publisher": {
+                "@id": "https://try-clothes.com/#organization"
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://try-clothes.com/#faq",
+              "mainEntity": [
                 {
-                    "@type": "Organization",
-                    "@id": "https://try-clothes.com/#organization",
-                    "name": "TryClothes",
-                    "url": "https://try-clothes.com",
-                    "logo": "https://try-clothes.com/logo.png",
-                    "description": "TryClothes construiește o experiență premium de probă virtuală pentru haine.",
-                    "sameAs": [
-                        "https://www.instagram.com/tryclothes",
-                        "https://www.tiktok.com/@tryclothes"
-                    ]
+                  "@type": "Question",
+                  "name": "Cum funcționează proba virtuală cu AI?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TryClothes analizează poza ta și imaginea hainei, apoi creează un preview virtual ca să vezi outfit-ul înainte să cumperi online."
+                  }
                 },
                 {
-                    "@type": "WebSite",
-                    "@id": "https://try-clothes.com/#website",
-                    "url": "https://try-clothes.com",
-                    "name": "TryClothes",
-                    "publisher": {
-                        "@id": "https://try-clothes.com/#organization"
-                    },
-                    "inLanguage": "ro-RO"
+                  "@type": "Question",
+                  "name": "Pot proba haine online înainte să cumpăr?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Da. Încarci o poză, alegi haine sau outfits și vezi cum pot arăta pe tine înainte să faci comanda."
+                  }
                 },
                 {
-                    "@type": "SoftwareApplication",
-                    "@id": "https://try-clothes.com/#app",
-                    "name": "TryClothes",
-                    "applicationCategory": "LifestyleApplication",
-                    "operatingSystem": "iOS",
-                    "url": "https://try-clothes.com",
-                    "image": "https://try-clothes.com/og-image.png",
-                    "description": "Aplicație pentru proba virtuală de haine: probează haine online, înainte să cumperi.",
-                    "keywords": "clothes, haine, proba haine, probează haine, probă virtuală, AI clothes try-on, haine online",
-                    "offers": {
-                        "@type": "Offer",
-                        "price": "0",
-                        "priceCurrency": "EUR",
-                        "availability": "https://schema.org/PreOrder"
-                    },
-                    "publisher": {
-                        "@id": "https://try-clothes.com/#organization"
-                    }
+                  "@type": "Question",
+                  "name": "Cât de precisă este analiza de fit?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TryClothes este construit pentru decizii vizuale mai bune: proporții, plasarea materialului și stil. Mărimea finală poate varia în funcție de brand și croială."
+                  }
                 },
                 {
-                    "@type": "FAQPage",
-                    "@id": "https://try-clothes.com/#faq",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "Cum funcționează proba virtuală cu AI?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "TryClothes analizează poza ta și imaginea hainei, apoi creează un preview virtual ca să vezi outfit-ul înainte să cumperi online."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Pot proba haine online înainte să cumpăr?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Da. Încarci o poză, alegi haine sau outfits și vezi cum pot arăta pe tine înainte să faci comanda."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Cât de precisă este analiza de fit?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "TryClothes este construit pentru decizii vizuale mai bune: proporții, plasarea materialului și stil. Mărimea finală poate varia în funcție de brand și croială."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Cum primesc acces la TryClothes?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Te înscrii pe lista TryClothes, iar când primești acces vei putea folosi aplicația pentru a proba haine online înainte de lansarea completă."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How does AI virtual try-on work?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "TryClothes uses AI to analyze a user photo and a clothing image, then creates a virtual preview so users can see outfits before buying online."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "Can I try clothes online before buying?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes. TryClothes lets users upload a photo, choose clothing or outfits, and preview how clothes may look before placing an online order."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How accurate is AI fitting?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "AI fitting is designed to help with visual decision-making by previewing proportions, fabric placement and outfit style, but final sizing can still vary by brand and garment."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "How do I get access to TryClothes?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Join the TryClothes list and you will receive access when your invitation is ready, so you can try clothes online before the full launch."
-                            }
-                        }
-                    ]
+                  "@type": "Question",
+                  "name": "Cum primesc acces la TryClothes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Te înscrii pe lista TryClothes, iar când primești acces vei putea folosi aplicația pentru a proba haine online înainte de lansarea completă."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does AI virtual try-on work?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "TryClothes uses AI to analyze a user photo and a clothing image, then creates a virtual preview so users can see outfits before buying online."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I try clothes online before buying?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. TryClothes lets users upload a photo, choose clothing or outfits, and preview how clothes may look before placing an online order."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How accurate is AI fitting?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI fitting is designed to help with visual decision-making by previewing proportions, fabric placement and outfit style, but final sizing can still vary by brand and garment."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I get access to TryClothes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Join the TryClothes list and you will receive access when your invitation is ready, so you can try clothes online before the full launch."
+                  }
                 }
-            ]
+              ]
+            }
+          ]
         }
     </script>
 </head>
@@ -452,6 +451,7 @@
                 <div class="footer-link-group">
                     <span class="footer-link-title" data-i18n="footer.resources">Resurse</span>
                     <a href="./how-it-works/" data-i18n="footer.how">Cum funcționează</a>
+                    <a href="./about/" data-i18n="footer.about">Despre TryClothes</a>
                     <a href="./reduce-clothing-returns/" data-i18n="footer.returns">Retururi mai puține</a>
                     <a href="#download" data-i18n="footer.signup">Înscrie-te</a>
                     <a href="./contact/" data-i18n="footer.contact">Contact</a>

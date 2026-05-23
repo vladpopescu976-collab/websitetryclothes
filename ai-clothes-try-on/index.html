@@ -27,75 +27,78 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/favicon-48x48.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="../styles.bundle.css?v=20260523anpccompact">
+    <link rel="stylesheet" href="../styles.bundle.css?v=20260524aboutbrand">
     <script src="../icons.js?v=20260523tbt6" defer></script>
     <script type="application/ld+json">
         {
-            "@context": "https://schema.org",
-            "@graph": [
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://try-clothes.com/#organization",
+              "name": "TryClothes",
+              "url": "https://try-clothes.com",
+              "logo": "https://try-clothes.com/logo.png",
+              "sameAs": [
+                "https://www.instagram.com/tryclothes_/"
+              ]
+            },
+            {
+              "@type": "WebPage",
+              "@id": "https://try-clothes.com/ai-clothes-try-on/#webpage",
+              "url": "https://try-clothes.com/ai-clothes-try-on/",
+              "name": "AI clothes try-on pentru haine",
+              "description": "Pagină despre AI clothes try-on, virtual try-on și probă de haine cu TryClothes.",
+              "inLanguage": "ro-RO"
+            },
+            {
+              "@type": "SoftwareApplication",
+              "@id": "https://try-clothes.com/#app",
+              "name": "TryClothes",
+              "applicationCategory": "LifestyleApplication",
+              "operatingSystem": "iOS",
+              "url": "https://try-clothes.com",
+              "description": "AI clothes try-on app pentru probă virtuală de haine."
+            },
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
                 {
-                    "@type": "Organization",
-                    "@id": "https://try-clothes.com/#organization",
-                    "name": "TryClothes",
-                    "url": "https://try-clothes.com",
-                    "logo": "https://try-clothes.com/logo.png"
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "TryClothes",
+                  "item": "https://try-clothes.com/"
                 },
                 {
-                    "@type": "WebPage",
-                    "@id": "https://try-clothes.com/ai-clothes-try-on/#webpage",
-                    "url": "https://try-clothes.com/ai-clothes-try-on/",
-                    "name": "AI clothes try-on pentru haine",
-                    "description": "Pagină despre AI clothes try-on, virtual try-on și probă de haine cu TryClothes.",
-                    "inLanguage": "ro-RO"
-                },
-                {
-                    "@type": "SoftwareApplication",
-                    "@id": "https://try-clothes.com/#app",
-                    "name": "TryClothes",
-                    "applicationCategory": "LifestyleApplication",
-                    "operatingSystem": "iOS",
-                    "url": "https://try-clothes.com",
-                    "description": "AI clothes try-on app pentru probă virtuală de haine."
-                },
-                {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                        {
-                            "@type": "ListItem",
-                            "position": 1,
-                            "name": "TryClothes",
-                            "item": "https://try-clothes.com/"
-                        },
-                        {
-                            "@type": "ListItem",
-                            "position": 2,
-                            "name": "AI clothes try-on",
-                            "item": "https://try-clothes.com/ai-clothes-try-on/"
-                        }
-                    ]
-                },
-                {
-                    "@type": "FAQPage",
-                    "mainEntity": [
-                        {
-                            "@type": "Question",
-                            "name": "What is AI clothes try-on?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "AI clothes try-on is a virtual fitting experience that shows how clothes or outfits may look on a person before buying online."
-                            }
-                        },
-                        {
-                            "@type": "Question",
-                            "name": "TryClothes este disponibil pentru haine și outfits?",
-                            "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Da. TryClothes este construit pentru haine, outfits, articole vestimentare și shopping online asistat de AI."
-                            }
-                        }
-                    ]
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "AI clothes try-on",
+                  "item": "https://try-clothes.com/ai-clothes-try-on/"
                 }
-            ]
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "What is AI clothes try-on?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AI clothes try-on is a virtual fitting experience that shows how clothes or outfits may look on a person before buying online."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "TryClothes este disponibil pentru haine și outfits?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Da. TryClothes este construit pentru haine, outfits, articole vestimentare și shopping online asistat de AI."
+                  }
+                }
+              ]
+            }
+          ]
         }
     </script>
 </head>
@@ -254,6 +257,7 @@
                 <div class="footer-link-group">
                     <span class="footer-link-title">Resurse</span>
                     <a href="../how-it-works/">Cum funcționează</a>
+                    <a href="../about/">Despre TryClothes</a>
                     <a href="../reduce-clothing-returns/">Retururi mai puține</a>
                     <a href="../#download">Înscrie-te</a>
                     <a href="../contact/">Contact</a>

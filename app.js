@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "anpc-compact-footer-2026-05-23";
+    const siteVersion = "about-brand-2026-05-24";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -85,6 +85,7 @@
                 aiTryOn: "Probă AI",
                 fittingRoom: "Cabină virtuală",
                 how: "Cum funcționează",
+                about: "Despre TryClothes",
                 returns: "Reducerea retururilor",
                 signup: "Înscrie-te",
                 privacy: "Confidențialitate",
@@ -172,6 +173,7 @@
                 aiTryOn: "AI try-on",
                 fittingRoom: "Virtual fitting room",
                 how: "How it works",
+                about: "About TryClothes",
                 returns: "Reduce returns",
                 signup: "Join",
                 privacy: "Privacy",
