@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "snappy-motion-2026-05-23";
+    const siteVersion = "instant-fluid-motion-2026-05-23";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -285,7 +285,7 @@
             window.cancelAnimationFrame(activeFrame);
             const startY = window.scrollY;
             const distance = targetY - startY;
-            const duration = Math.min(520, Math.max(220, Math.abs(distance) * 0.045));
+            const duration = Math.min(300, Math.max(110, Math.abs(distance) * 0.026));
             const startTime = performance.now();
             document.documentElement.classList.add("is-programmatic-scroll");
 
@@ -300,7 +300,7 @@
 
                 window.setTimeout(() => {
                     document.documentElement.classList.remove("is-programmatic-scroll");
-                }, 70);
+                }, 24);
             };
 
             activeFrame = window.requestAnimationFrame(step);
@@ -363,15 +363,15 @@
 
         const idleStart = () => {
             if ("requestIdleCallback" in window) {
-                window.requestIdleCallback(start, { timeout: 650 });
+                window.requestIdleCallback(start, { timeout: 160 });
                 return;
             }
-            window.setTimeout(start, 360);
+            window.setTimeout(start, 80);
         };
 
-        window.setTimeout(idleStart, 90);
-        window.addEventListener("load", () => window.setTimeout(idleStart, 60), { once: true });
-        window.setTimeout(start, 2600);
+        window.setTimeout(idleStart, 12);
+        window.addEventListener("load", () => window.setTimeout(idleStart, 20), { once: true });
+        window.setTimeout(start, 900);
     }
 
     function initDeferredImages() {
@@ -423,6 +423,7 @@
 
         window.addEventListener("scroll", loadImages, { once: true, passive: true });
         window.addEventListener("pointerdown", loadImages, { once: true, passive: true });
+        idleLoad(loadHeroImages, 260);
         window.addEventListener("load", () => {
             idleLoad(loadHeroImages, 520);
             window.setTimeout(() => idleLoad(loadImages, 1200), 900);
@@ -483,11 +484,11 @@
         const setInitial = () => {
             const isMobile = media.mobile.matches;
             const isTablet = media.tablet.matches;
-            hero.style.setProperty("--hero-scroll-height", isMobile ? "560vh" : isTablet ? "730vh" : "940vh");
+            hero.style.setProperty("--hero-scroll-height", isMobile ? "460vh" : isTablet ? "570vh" : "700vh");
             handoffElements.forEach((element) => {
                 element.style.opacity = "0";
-                element.style.transform = `translate3d(0, ${isMobile ? 36 : 70}px, 0) scale(0.98)`;
-                element.style.filter = isMobile || state.chromium ? "blur(0px)" : "blur(4px)";
+                element.style.transform = `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`;
+                element.style.filter = "none";
                 element.style.transition = "none";
             });
         };
@@ -515,19 +516,18 @@
         const apply = () => {
             const progress = clamp((window.scrollY - metrics.top) / metrics.range);
             const isMobile = media.mobile.matches;
-            const lightScroll = isMobile || state.chromium || document.documentElement.classList.contains("is-programmatic-scroll");
             const introY = isMobile ? -84 : -84;
             const floatY = isMobile ? -124 : -122;
             const finalY = isMobile ? -146 : -142;
-            const entry = smoothstep(0.04, 0.2, progress);
-            const firstSpin = smoothstep(0.22, 0.5, progress);
-            const secondSpin = smoothstep(0.55, 0.82, progress);
-            const spinPulse = Math.max(pulse(0.22, 0.36, 0.5, progress), pulse(0.55, 0.68, 0.82, progress));
-            const zoom = smoothstep(0.82, 0.91, progress);
-            const fadeOut = smoothstep(0.88, 0.95, progress);
-            const handoff = smoothstep(0.8, 0.9, progress);
-            const midOpacity = 0.68 * pulse(0.31, 0.38, 0.5, progress);
-            const finalOpacity = 0.72 * pulse(0.72, 0.8, 0.9, progress);
+            const entry = smoothstep(0.02, 0.125, progress);
+            const firstSpin = smoothstep(0.16, 0.37, progress);
+            const secondSpin = smoothstep(0.43, 0.64, progress);
+            const spinPulse = Math.max(pulse(0.16, 0.265, 0.37, progress), pulse(0.43, 0.535, 0.64, progress));
+            const zoom = smoothstep(0.64, 0.73, progress);
+            const fadeOut = smoothstep(0.72, 0.82, progress);
+            const handoff = smoothstep(0.62, 0.72, progress);
+            const midOpacity = 0.68 * pulse(0.22, 0.275, 0.37, progress);
+            const finalOpacity = 0.72 * pulse(0.55, 0.62, 0.72, progress);
             const rotationY = progress < 0.52 ? lerp(0, 180, firstSpin) : lerp(180, 360, secondSpin);
             const floatBlend = Math.sin(spinPulse * Math.PI);
             const yBase = lerp(-window.innerHeight, introY, entry);
@@ -537,15 +537,12 @@
             const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const phoneOpacity = clamp(entry - fadeOut);
-            const flare = Math.max(pulse(0.235, 0.31, 0.4, progress), pulse(0.565, 0.64, 0.74, progress));
-            const glassBloom = Math.max(pulse(0.24, 0.36, 0.5, progress), pulse(0.57, 0.7, 0.84, progress), zoom);
-            const originalOpacity = 0.82 * (1 - smoothstep(0.39, 0.46, progress));
-            const resultOpacity = smoothstep(0.46, 0.52, progress);
-            const heroTextOut = smoothstep(0, 0.14, progress);
+            const originalOpacity = 0.82 * (1 - smoothstep(0.36, 0.42, progress));
+            const resultOpacity = smoothstep(0.42, 0.48, progress);
+            const heroTextOut = smoothstep(0, 0.12, progress);
             const animateAtmosphere = !state.chromium && !isMobile && !document.documentElement.classList.contains("is-programmatic-scroll");
 
             phoneDrop.style.opacity = phoneOpacity.toFixed(3);
-            phoneDrop.style.filter = lightScroll ? "blur(0px)" : `blur(${(4 * (1 - entry) + 12 * fadeOut).toFixed(2)}px)`;
             phoneDrop.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
             phone.style.transform = `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin)).toFixed(2)}deg)`;
 
@@ -553,12 +550,11 @@
                 setVars(phoneDrop, {
                     "--original-screen-opacity": originalOpacity.toFixed(3),
                     "--result-screen-opacity": resultOpacity.toFixed(3),
-                    "--aura-opacity": (entry * 0.38 + zoom * 0.08).toFixed(3),
-                    "--ring-opacity": (spinPulse * 0.22 + zoom * 0.14).toFixed(3),
-                    "--edge-glow": (entry * 0.26 + spinPulse * 0.36 + zoom * 0.14).toFixed(3),
-                    "--metal-flare-opacity": (flare * 0.5 + zoom * 0.08).toFixed(3)
+                    "--edge-glow": (entry * 0.2 + spinPulse * 0.28 + zoom * 0.1).toFixed(3)
                 });
             } else {
+                const flare = Math.max(pulse(0.235, 0.31, 0.4, progress), pulse(0.565, 0.64, 0.74, progress));
+                const glassBloom = Math.max(pulse(0.24, 0.36, 0.5, progress), pulse(0.57, 0.7, 0.84, progress), zoom);
                 setVars(phoneDrop, {
                     "--original-screen-opacity": originalOpacity.toFixed(3),
                     "--result-screen-opacity": resultOpacity.toFixed(3),
@@ -575,19 +571,16 @@
 
             if (heroText) {
                 heroText.style.opacity = (1 - heroTextOut).toFixed(3);
-                heroText.style.filter = lightScroll ? "blur(0px)" : `blur(${(10 * heroTextOut).toFixed(2)}px)`;
                 heroText.style.transform = `translate(-50%, ${(-40 * heroTextOut).toFixed(2)}px) scale(${(1 - 0.04 * heroTextOut).toFixed(3)})`;
             }
 
             if (textMid) {
                 textMid.style.opacity = midOpacity.toFixed(3);
-                textMid.style.filter = lightScroll ? "blur(0px)" : `blur(${(8 * (1 - midOpacity / 0.68)).toFixed(2)}px)`;
                 textMid.style.transform = `translate(-50%, ${lerp(16, -30, midOpacity / 0.68 || 0).toFixed(2)}px)`;
             }
 
             if (textFinal) {
                 textFinal.style.opacity = finalOpacity.toFixed(3);
-                textFinal.style.filter = lightScroll ? "blur(0px)" : `blur(${(8 * (1 - finalOpacity / 0.72)).toFixed(2)}px)`;
                 textFinal.style.transform = `translate(-50%, ${lerp(18, -24, finalOpacity / 0.72 || 0).toFixed(2)}px)`;
             }
 
@@ -605,7 +598,7 @@
                 glareBack.style.transform = `translateX(${lerp(-100, 100, secondSpin).toFixed(1)}%) rotate(25deg)`;
             }
 
-            if (scanLine) {
+            if (scanLine && !state.chromium && !isMobile) {
                 scanLine.style.opacity = (progress > 0.22 && progress < 0.86 ? 1 - zoom : 0.04).toFixed(3);
             }
 
@@ -622,8 +615,7 @@
             handoffElements.forEach((element, index) => {
                 const elementProgress = clamp(handoff - index * 0.06);
                 element.style.opacity = elementProgress.toFixed(3);
-                element.style.transform = `translate3d(0, ${((1 - elementProgress) * (isMobile ? 36 : 70)).toFixed(2)}px, 0) scale(${(0.98 + elementProgress * 0.02).toFixed(3)})`;
-                element.style.filter = "blur(0px)";
+                element.style.transform = `translate3d(0, ${((1 - elementProgress) * (isMobile ? 24 : 42)).toFixed(2)}px, 0) scale(${(0.99 + elementProgress * 0.01).toFixed(3)})`;
             });
         };
 
@@ -652,17 +644,17 @@
                     return;
                 }
                 const element = entry.target;
-                element.style.transition = "opacity 520ms ease, transform 520ms cubic-bezier(0.16, 1, 0.3, 1)";
+                element.style.transition = "opacity 360ms ease, transform 360ms cubic-bezier(0.16, 1, 0.3, 1)";
                 element.style.opacity = "1";
                 element.style.transform = "translate3d(0, 0, 0) scale(1)";
                 element.style.filter = "none";
                 observer.unobserve(element);
             });
-        }, { rootMargin: "0px 0px -6% 0px", threshold: 0.08 });
+        }, { rootMargin: "0px 0px -2% 0px", threshold: 0.04 });
 
         elements.forEach((element) => {
             element.style.opacity = "0";
-            element.style.transform = "translate3d(0, 42px, 0) scale(0.985)";
+            element.style.transform = "translate3d(0, 26px, 0) scale(0.995)";
             element.style.filter = "none";
             observer.observe(element);
         });

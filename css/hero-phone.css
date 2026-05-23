@@ -2,7 +2,7 @@
 .hero-shell {
     position: relative;
     width: 100%;
-    height: var(--hero-scroll-height, 940vh);
+    height: var(--hero-scroll-height, 700vh);
     background: var(--cream);
     overflow: visible;
 }
@@ -204,7 +204,7 @@
         radial-gradient(ellipse at 62% 54%, rgba(118, 164, 255, 0.1), transparent 54%);
     filter: blur(36px);
     transform: scale(var(--aura-scale)) translateZ(-36px);
-    transition: opacity 140ms linear, transform 140ms linear;
+    transition: none;
 }
 
 .phone-drop::after {
@@ -440,8 +440,19 @@
 }
 
 .is-chromium .cinematic-light,
-.is-chromium .glare {
+.is-chromium .glare,
+.is-chromium .scan-line {
     display: none;
+}
+
+.is-chromium .phone-drop::before,
+.is-chromium .phone-drop::after,
+.is-chromium .screen-mask::after {
+    display: none;
+}
+
+.is-chromium .phone-3d-wrapper::before {
+    opacity: 0 !important;
 }
 
 .story-caption {
