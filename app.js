@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "premium-fluid-motion-2026-05-23";
+    const siteVersion = "footer-groups-2026-05-23";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -75,15 +75,22 @@
                 error: "Nu s-a trimis. Încearcă din nou în câteva secunde."
             },
             footer: {
+                aria: "Pagini TryClothes",
                 copy: "© 2026 TryClothes. Probă virtuală AI pentru haine, ținute și cumpărături online.",
+                product: "Produs",
+                resources: "Resurse",
+                legal: "Legal",
                 tryClothes: "Probează haine",
                 virtualTryOn: "Probă virtuală",
                 aiTryOn: "Probă AI",
                 fittingRoom: "Cabină virtuală",
                 how: "Cum funcționează",
                 returns: "Reducerea retururilor",
+                signup: "Înscrie-te",
                 privacy: "Confidențialitate",
-                terms: "Termeni"
+                terms: "Termeni",
+                cookies: "Cookies",
+                contact: "Contact"
             },
             language: {
                 aria: "Alege limba site-ului",
@@ -155,15 +162,22 @@
                 error: "It did not send. Try again in a few seconds."
             },
             footer: {
+                aria: "TryClothes pages",
                 copy: "© 2026 TryClothes. AI virtual try-on for clothes, outfits and online shopping.",
+                product: "Product",
+                resources: "Resources",
+                legal: "Legal",
                 tryClothes: "Try clothes",
                 virtualTryOn: "Virtual try-on",
                 aiTryOn: "AI try-on",
                 fittingRoom: "Virtual fitting room",
                 how: "How it works",
                 returns: "Reduce returns",
+                signup: "Join",
                 privacy: "Privacy",
-                terms: "Terms"
+                terms: "Terms",
+                cookies: "Cookies",
+                contact: "Contact"
             },
             language: {
                 aria: "Choose website language",

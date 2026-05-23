@@ -64,8 +64,13 @@
     }
 
     .footer-links {
-        align-items: center;
-        text-align: center;
+        width: min(100%, 680px);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        text-align: left;
+    }
+
+    .footer-link-group {
+        min-height: auto;
     }
 
     .footer-links a:hover {
@@ -473,6 +478,25 @@
 
     .waitlist-form .button {
         width: 100%;
+    }
+
+    .footer-links {
+        grid-template-columns: 1fr;
+        width: min(100%, 320px);
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-link-group {
+        justify-items: center;
+        padding: 20px 0 0;
+        border-left: 0;
+        border-top: 1px solid rgba(111, 79, 22, 0.16);
+    }
+
+    .footer-link-group:first-child {
+        padding-top: 0;
+        border-top: 0;
     }
 }
 
