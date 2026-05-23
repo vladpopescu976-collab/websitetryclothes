@@ -101,7 +101,7 @@
 
 .floating-phone-stage {
     position: relative;
-    min-height: 560px;
+    min-height: 650px;
     display: grid;
     place-items: center;
     isolation: isolate;
@@ -144,13 +144,13 @@
 
 .editorial-phone-result {
     left: 18%;
-    top: 8px;
+    top: 0;
     transform: rotate(-7deg);
 }
 
 .editorial-phone-fit {
     right: 17%;
-    bottom: 0;
+    bottom: 34px;
     transform: rotate(6deg);
 }
 
@@ -355,6 +355,25 @@
     top: auto;
     margin: 0;
     text-align: left;
+}
+
+.faq-language-stack {
+    display: grid;
+    gap: 44px;
+}
+
+.faq-language-block {
+    display: grid;
+    gap: 12px;
+}
+
+.faq-language-title {
+    margin: 0;
+    color: var(--gold-deep);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
 }
 
 .faq-grid {

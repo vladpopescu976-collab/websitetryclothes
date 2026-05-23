@@ -271,17 +271,17 @@
     }
 
     .floating-phone-stage {
-        min-height: 520px;
+        min-height: 570px;
     }
 
     .editorial-phone-result {
         left: 8%;
-        top: 8px;
+        top: 0;
     }
 
     .editorial-phone-fit {
         right: 8%;
-        bottom: 0;
+        bottom: 24px;
     }
 
     .editorial-phone-shell {
@@ -307,6 +307,10 @@
     .faq-layout {
         grid-template-columns: 1fr;
         gap: 42px;
+    }
+
+    .faq-language-stack {
+        gap: 36px;
     }
 
     .faq-heading {
@@ -355,7 +359,7 @@
     }
 
     .floating-phone-stage {
-        min-height: 318px;
+        min-height: 382px;
     }
 
     .floating-phone-stage::after {
@@ -405,8 +409,12 @@
 
     .editorial-phone-fit {
         right: 3%;
-        bottom: 0;
+        bottom: 16px;
         transform: rotate(5deg);
+    }
+
+    .editorial-phone {
+        gap: 12px;
     }
 
     .editorial-phone span {
