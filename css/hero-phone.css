@@ -2,7 +2,7 @@
 .hero-shell {
     position: relative;
     width: 100%;
-    height: var(--hero-scroll-height, 700vh);
+    height: var(--hero-scroll-height, 820vh);
     background: var(--cream);
     overflow: visible;
 }
@@ -453,6 +453,12 @@
 
 .is-chromium .phone-3d-wrapper::before {
     opacity: 0 !important;
+}
+
+.is-chromium .phone-3d-wrapper::after {
+    box-shadow:
+        inset 10px 0 22px rgba(255, 255, 255, 0.08),
+        inset -10px 0 22px rgba(232, 201, 130, 0.1);
 }
 
 .story-caption {

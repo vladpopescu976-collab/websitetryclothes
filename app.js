@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "instant-fluid-motion-2026-05-23";
+    const siteVersion = "premium-fluid-motion-2026-05-23";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -450,8 +450,27 @@
         return value < peak ? smoothstep(start, peak, value) : 1 - smoothstep(peak, end, value);
     }
 
+    const styleCache = new WeakMap();
+
+    function setStyle(element, property, value) {
+        let cache = styleCache.get(element);
+        if (!cache) {
+            cache = {};
+            styleCache.set(element, cache);
+        }
+        if (cache[property] === value) {
+            return;
+        }
+        cache[property] = value;
+        if (property.startsWith("--")) {
+            element.style.setProperty(property, value);
+            return;
+        }
+        element.style[property] = value;
+    }
+
     function setVars(element, vars) {
-        Object.entries(vars).forEach(([key, value]) => element.style.setProperty(key, value));
+        Object.entries(vars).forEach(([key, value]) => setStyle(element, key, value));
     }
 
     function initPremiumScroll() {
@@ -479,17 +498,19 @@
         };
 
         let metrics = { top: 0, range: 1 };
+        let targetProgress = 0;
+        let renderedProgress = 0;
         let ticking = false;
 
         const setInitial = () => {
             const isMobile = media.mobile.matches;
             const isTablet = media.tablet.matches;
-            hero.style.setProperty("--hero-scroll-height", isMobile ? "460vh" : isTablet ? "570vh" : "700vh");
+            setStyle(hero, "--hero-scroll-height", isMobile ? "520vh" : isTablet ? "650vh" : "820vh");
             handoffElements.forEach((element) => {
-                element.style.opacity = "0";
-                element.style.transform = `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`;
-                element.style.filter = "none";
-                element.style.transition = "none";
+                setStyle(element, "opacity", "0");
+                setStyle(element, "transform", `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`);
+                setStyle(element, "filter", "none");
+                setStyle(element, "transition", "none");
             });
         };
 
@@ -499,35 +520,60 @@
                 top: hero.offsetTop,
                 range: Math.max(1, hero.offsetHeight - window.innerHeight)
             };
-            apply();
+            targetProgress = clamp((window.scrollY - metrics.top) / metrics.range);
+            renderedProgress = targetProgress;
+            apply(renderedProgress);
+        };
+
+        const updateTarget = () => {
+            targetProgress = clamp((window.scrollY - metrics.top) / metrics.range);
+        };
+
+        const renderFrame = () => {
+            const isMobile = media.mobile.matches;
+            const smoothing = state.chromium ? 0.2 : isMobile ? 0.22 : 1;
+            if (smoothing >= 1) {
+                renderedProgress = targetProgress;
+            } else {
+                renderedProgress += (targetProgress - renderedProgress) * smoothing;
+                if (Math.abs(targetProgress - renderedProgress) < 0.0007) {
+                    renderedProgress = targetProgress;
+                }
+            }
+
+            apply(renderedProgress);
+
+            if (renderedProgress !== targetProgress) {
+                requestAnimationFrame(renderFrame);
+                return;
+            }
+
+            ticking = false;
         };
 
         const requestApply = () => {
+            updateTarget();
             if (ticking) {
                 return;
             }
             ticking = true;
-            requestAnimationFrame(() => {
-                ticking = false;
-                apply();
-            });
+            requestAnimationFrame(renderFrame);
         };
 
-        const apply = () => {
-            const progress = clamp((window.scrollY - metrics.top) / metrics.range);
+        const apply = (progress) => {
             const isMobile = media.mobile.matches;
             const introY = isMobile ? -84 : -84;
             const floatY = isMobile ? -124 : -122;
             const finalY = isMobile ? -146 : -142;
-            const entry = smoothstep(0.02, 0.125, progress);
-            const firstSpin = smoothstep(0.16, 0.37, progress);
-            const secondSpin = smoothstep(0.43, 0.64, progress);
-            const spinPulse = Math.max(pulse(0.16, 0.265, 0.37, progress), pulse(0.43, 0.535, 0.64, progress));
-            const zoom = smoothstep(0.64, 0.73, progress);
-            const fadeOut = smoothstep(0.72, 0.82, progress);
-            const handoff = smoothstep(0.62, 0.72, progress);
-            const midOpacity = 0.68 * pulse(0.22, 0.275, 0.37, progress);
-            const finalOpacity = 0.72 * pulse(0.55, 0.62, 0.72, progress);
+            const entry = smoothstep(0.025, 0.16, progress);
+            const firstSpin = smoothstep(0.2, 0.48, progress);
+            const secondSpin = smoothstep(0.54, 0.8, progress);
+            const spinPulse = Math.max(pulse(0.2, 0.34, 0.48, progress), pulse(0.54, 0.67, 0.8, progress));
+            const zoom = smoothstep(0.78, 0.88, progress);
+            const fadeOut = smoothstep(0.86, 0.94, progress);
+            const handoff = smoothstep(0.76, 0.86, progress);
+            const midOpacity = 0.68 * pulse(0.3, 0.38, 0.48, progress);
+            const finalOpacity = 0.72 * pulse(0.68, 0.76, 0.86, progress);
             const rotationY = progress < 0.52 ? lerp(0, 180, firstSpin) : lerp(180, 360, secondSpin);
             const floatBlend = Math.sin(spinPulse * Math.PI);
             const yBase = lerp(-window.innerHeight, introY, entry);
@@ -537,14 +583,14 @@
             const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const phoneOpacity = clamp(entry - fadeOut);
-            const originalOpacity = 0.82 * (1 - smoothstep(0.36, 0.42, progress));
-            const resultOpacity = smoothstep(0.42, 0.48, progress);
-            const heroTextOut = smoothstep(0, 0.12, progress);
+            const originalOpacity = 0.82 * (1 - smoothstep(0.46, 0.52, progress));
+            const resultOpacity = smoothstep(0.52, 0.58, progress);
+            const heroTextOut = smoothstep(0, 0.15, progress);
             const animateAtmosphere = !state.chromium && !isMobile && !document.documentElement.classList.contains("is-programmatic-scroll");
 
-            phoneDrop.style.opacity = phoneOpacity.toFixed(3);
-            phoneDrop.style.transform = `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`;
-            phone.style.transform = `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin)).toFixed(2)}deg)`;
+            setStyle(phoneDrop, "opacity", phoneOpacity.toFixed(3));
+            setStyle(phoneDrop, "transform", `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`);
+            setStyle(phone, "transform", `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin)).toFixed(2)}deg)`);
 
             if (state.chromium || isMobile) {
                 setVars(phoneDrop, {
@@ -570,52 +616,52 @@
             }
 
             if (heroText) {
-                heroText.style.opacity = (1 - heroTextOut).toFixed(3);
-                heroText.style.transform = `translate(-50%, ${(-40 * heroTextOut).toFixed(2)}px) scale(${(1 - 0.04 * heroTextOut).toFixed(3)})`;
+                setStyle(heroText, "opacity", (1 - heroTextOut).toFixed(3));
+                setStyle(heroText, "transform", `translate(-50%, ${(-40 * heroTextOut).toFixed(2)}px) scale(${(1 - 0.04 * heroTextOut).toFixed(3)})`);
             }
 
             if (textMid) {
-                textMid.style.opacity = midOpacity.toFixed(3);
-                textMid.style.transform = `translate(-50%, ${lerp(16, -30, midOpacity / 0.68 || 0).toFixed(2)}px)`;
+                setStyle(textMid, "opacity", midOpacity.toFixed(3));
+                setStyle(textMid, "transform", `translate(-50%, ${lerp(16, -30, midOpacity / 0.68 || 0).toFixed(2)}px)`);
             }
 
             if (textFinal) {
-                textFinal.style.opacity = finalOpacity.toFixed(3);
-                textFinal.style.transform = `translate(-50%, ${lerp(18, -24, finalOpacity / 0.72 || 0).toFixed(2)}px)`;
+                setStyle(textFinal, "opacity", finalOpacity.toFixed(3));
+                setStyle(textFinal, "transform", `translate(-50%, ${lerp(18, -24, finalOpacity / 0.72 || 0).toFixed(2)}px)`);
             }
 
             if (transitionWash) {
-                transitionWash.style.opacity = smoothstep(0.87, 0.94, progress).toFixed(3);
+                setStyle(transitionWash, "opacity", smoothstep(0.87, 0.94, progress).toFixed(3));
             }
 
             if (glareFront && animateAtmosphere) {
-                glareFront.style.opacity = (progress > 0.2 && progress < 0.54 ? 1 : 0.04).toFixed(3);
-                glareFront.style.transform = `translateX(${lerp(-100, 100, firstSpin).toFixed(1)}%) rotate(25deg)`;
+                setStyle(glareFront, "opacity", (progress > 0.2 && progress < 0.54 ? 1 : 0.04).toFixed(3));
+                setStyle(glareFront, "transform", `translateX(${lerp(-100, 100, firstSpin).toFixed(1)}%) rotate(25deg)`);
             }
 
             if (glareBack && animateAtmosphere) {
-                glareBack.style.opacity = (progress > 0.55 && progress < 0.84 ? 1 : 0.04).toFixed(3);
-                glareBack.style.transform = `translateX(${lerp(-100, 100, secondSpin).toFixed(1)}%) rotate(25deg)`;
+                setStyle(glareBack, "opacity", (progress > 0.55 && progress < 0.84 ? 1 : 0.04).toFixed(3));
+                setStyle(glareBack, "transform", `translateX(${lerp(-100, 100, secondSpin).toFixed(1)}%) rotate(25deg)`);
             }
 
             if (scanLine && !state.chromium && !isMobile) {
-                scanLine.style.opacity = (progress > 0.22 && progress < 0.86 ? 1 - zoom : 0.04).toFixed(3);
+                setStyle(scanLine, "opacity", (progress > 0.22 && progress < 0.86 ? 1 - zoom : 0.04).toFixed(3));
             }
 
             if (leftLight && animateAtmosphere) {
-                leftLight.style.opacity = (entry * 0.42 + spinPulse * 0.36).toFixed(3);
-                leftLight.style.transform = `translate3d(${lerp(-100, progress < 0.52 ? 90 : -30, progress).toFixed(1)}px, ${lerp(50, progress < 0.52 ? -38 : 34, progress).toFixed(1)}px, 0) scale(${(0.8 + entry * 0.28).toFixed(3)})`;
+                setStyle(leftLight, "opacity", (entry * 0.42 + spinPulse * 0.36).toFixed(3));
+                setStyle(leftLight, "transform", `translate3d(${lerp(-100, progress < 0.52 ? 90 : -30, progress).toFixed(1)}px, ${lerp(50, progress < 0.52 ? -38 : 34, progress).toFixed(1)}px, 0) scale(${(0.8 + entry * 0.28).toFixed(3)})`);
             }
 
             if (rightLight && animateAtmosphere) {
-                rightLight.style.opacity = (entry * 0.38 + spinPulse * 0.42).toFixed(3);
-                rightLight.style.transform = `translate3d(${lerp(100, progress < 0.52 ? -70 : 58, progress).toFixed(1)}px, ${lerp(-50, progress < 0.52 ? 26 : -42, progress).toFixed(1)}px, 0) scale(${(0.8 + entry * 0.32).toFixed(3)})`;
+                setStyle(rightLight, "opacity", (entry * 0.38 + spinPulse * 0.42).toFixed(3));
+                setStyle(rightLight, "transform", `translate3d(${lerp(100, progress < 0.52 ? -70 : 58, progress).toFixed(1)}px, ${lerp(-50, progress < 0.52 ? 26 : -42, progress).toFixed(1)}px, 0) scale(${(0.8 + entry * 0.32).toFixed(3)})`);
             }
 
             handoffElements.forEach((element, index) => {
                 const elementProgress = clamp(handoff - index * 0.06);
-                element.style.opacity = elementProgress.toFixed(3);
-                element.style.transform = `translate3d(0, ${((1 - elementProgress) * (isMobile ? 24 : 42)).toFixed(2)}px, 0) scale(${(0.99 + elementProgress * 0.01).toFixed(3)})`;
+                setStyle(element, "opacity", elementProgress.toFixed(3));
+                setStyle(element, "transform", `translate3d(0, ${((1 - elementProgress) * (isMobile ? 24 : 42)).toFixed(2)}px, 0) scale(${(0.99 + elementProgress * 0.01).toFixed(3)})`);
             });
         };
 
