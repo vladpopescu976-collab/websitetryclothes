@@ -37,9 +37,18 @@
 
     window.TryClothesIcons = { createIcons };
 
+    function scheduleCreateIcons() {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(() => createIcons(), { timeout: 1500 });
+            return;
+        }
+
+        window.setTimeout(() => createIcons(), 650);
+    }
+
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => createIcons(), { once: true });
+        document.addEventListener("DOMContentLoaded", scheduleCreateIcons, { once: true });
     } else {
-        createIcons();
+        scheduleCreateIcons();
     }
 })();

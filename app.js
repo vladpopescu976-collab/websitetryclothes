@@ -9,7 +9,6 @@
 
     document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.dataset.tryclothesSite = siteVersion;
-        createIcons();
         initDeferredImages();
         initWaitlist();
 
@@ -20,12 +19,42 @@
             return;
         }
 
-        initPremiumScroll();
-        initReveals();
+        scheduleMotionSetup();
     });
 
-    function createIcons() {
-        window.TryClothesIcons?.createIcons();
+    function scheduleMotionSetup() {
+        let started = false;
+        const events = ["scroll", "wheel", "touchstart", "pointerdown", "keydown"];
+        document.documentElement.dataset.motionSetup = "scheduled";
+
+        const cleanup = () => {
+            events.forEach((eventName) => window.removeEventListener(eventName, start));
+        };
+
+        const start = () => {
+            if (started) {
+                return;
+            }
+            started = true;
+            cleanup();
+            document.documentElement.dataset.motionSetup = "started";
+            window.TryClothesSite.motionSetupStarted = true;
+            try {
+                initPremiumScroll();
+                initReveals();
+                document.documentElement.dataset.motionSetup = "ready";
+                window.TryClothesSite.motionSetupReady = true;
+            } catch (error) {
+                document.documentElement.dataset.motionSetup = "error";
+                window.TryClothesSite.motionSetupError = error?.message || "Motion setup failed";
+            }
+        };
+
+        events.forEach((eventName) => {
+            window.addEventListener(eventName, start, { once: true, passive: true });
+        });
+
+        window.setTimeout(start, 8500);
     }
 
     function initDeferredImages() {
@@ -50,7 +79,7 @@
         window.addEventListener("scroll", loadImages, { once: true, passive: true });
         window.addEventListener("pointerdown", loadImages, { once: true, passive: true });
         window.addEventListener("load", () => {
-            window.setTimeout(loadImages, 2600);
+            window.setTimeout(loadImages, 12000);
         }, { once: true });
     }
 
