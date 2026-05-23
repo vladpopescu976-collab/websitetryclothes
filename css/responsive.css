@@ -84,7 +84,7 @@
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .hero-shell {
-        height: var(--hero-scroll-height, 560vh);
+        height: var(--hero-scroll-height, 480vh);
     }
 
     .hero-bg {
@@ -108,7 +108,7 @@
 
 @media (max-width: 640px) {
     .hero-shell {
-        height: var(--hero-scroll-height, 470vh);
+        height: var(--hero-scroll-height, 420vh);
     }
 
     .site-nav {

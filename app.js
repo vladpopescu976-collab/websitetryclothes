@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "optimized-2026-05-24";
+    const siteVersion = "hero-handoff-2026-05-24";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -535,7 +535,7 @@
         const setInitial = () => {
             const isMobile = media.mobile.matches;
             const isTablet = media.tablet.matches;
-            setStyle(hero, "--hero-scroll-height", isMobile ? "470vh" : isTablet ? "560vh" : "620vh");
+            setStyle(hero, "--hero-scroll-height", isMobile ? "420vh" : isTablet ? "480vh" : "540vh");
             handoffElements.forEach((element) => {
                 setStyle(element, "opacity", "0");
                 setStyle(element, "transform", `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`);
@@ -599,9 +599,8 @@
             const firstSpin = smoothstep(0.18, 0.44, progress);
             const secondSpin = smoothstep(0.5, 0.74, progress);
             const spinPulse = Math.max(pulse(0.18, 0.31, 0.44, progress), pulse(0.5, 0.62, 0.74, progress));
-            const zoom = smoothstep(0.76, 0.91, progress);
-            const fadeOut = smoothstep(0.9, 0.985, progress);
-            const handoff = smoothstep(0.82, 0.96, progress);
+            const zoom = smoothstep(0.72, 0.998, progress);
+            const handoff = smoothstep(0.8, 1, progress);
             const midOpacity = 0.68 * pulse(0.27, 0.35, 0.45, progress);
             const finalOpacity = 0.72 * pulse(0.64, 0.73, 0.88, progress);
             const rotationY = progress < 0.52 ? lerp(0, 180, firstSpin) : lerp(180, 360, secondSpin);
@@ -612,7 +611,7 @@
             const scale = lerp(lerp(0.8, 1, entry) + spinPulse * 0.04, 2.18, zoom);
             const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinPulse * (progress > 0.22 ? 1 : 0);
-            const phoneOpacity = clamp(entry - fadeOut);
+            const phoneOpacity = clamp(entry);
             const originalOpacity = 0.82 * (1 - smoothstep(0.46, 0.52, progress));
             const resultOpacity = smoothstep(0.52, 0.58, progress);
             const heroTextOut = smoothstep(0, 0.15, progress);
@@ -661,7 +660,7 @@
             }
 
             if (transitionWash) {
-                setStyle(transitionWash, "opacity", smoothstep(0.84, 0.985, progress).toFixed(3));
+                setStyle(transitionWash, "opacity", (0.68 * smoothstep(0.92, 1, progress)).toFixed(3));
             }
 
             if (glareFront && animateAtmosphere) {

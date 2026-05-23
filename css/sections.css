@@ -77,7 +77,7 @@
 
 .section-intro {
     margin-top: 0;
-    padding-top: clamp(72px, 8vw, 104px);
+    padding-top: clamp(52px, 6vw, 80px);
     padding-bottom: 72px;
 }
 
