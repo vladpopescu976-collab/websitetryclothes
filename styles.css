@@ -1,6 +1,6 @@
 /* TryClothes CSS entrypoint. Keep section-specific styles in /css. */
-@import url("./css/base.css?v=20260523spacing");
-@import url("./css/hero-phone.css?v=20260523spacing");
-@import url("./css/sections.css?v=20260523spacing");
-@import url("./css/seo-pages.css?v=20260523spacing");
-@import url("./css/responsive.css?v=20260523spacing");
+@import url("./css/base.css");
+@import url("./css/hero-phone.css");
+@import url("./css/sections.css");
+@import url("./css/seo-pages.css");
+@import url("./css/responsive.css");

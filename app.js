@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "about-brand-2026-05-24";
+    const siteVersion = "optimized-2026-05-24";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -12,8 +12,8 @@
     const translations = {
         ro: {
             meta: {
-                title: "TryClothes – AI Virtual Try-On App | Try Clothes Before You Buy",
-                description: "Try clothes online with AI. Upload a photo, preview outfits instantly and see how clothes fit before buying. Reduce clothing returns with TryClothes."
+                title: "TryClothes – Probează haine online cu AI înainte să cumperi",
+                description: "Probează haine online cu AI. Încarcă o poză, previzualizează outfit-uri instant și vezi cum îți vin hainele înainte să cumperi cu TryClothes."
             },
             nav: {
                 aria: "Navigație principală",
@@ -68,7 +68,7 @@
                 emailPlaceholder: "Adresa ta de email",
                 subject: "Înscriere nouă TryClothes",
                 button: "Vreau să probez",
-                consent: "Sunt de acord să fiu contactat pe email pentru acces TryClothes și am citit <a href=\"./privacy/\">Politica de confidențialitate</a>.",
+                consent: "Sunt de acord să fiu contactat pe email pentru acces TryClothes și am citit <a href=\"/privacy/\">Politica de confidențialitate</a>.",
                 consentError: "Bifează acordul de confidențialitate pentru a te înscrie.",
                 sending: "Se trimite înscrierea...",
                 success: "Gata. Te-am adăugat pe listă.",
@@ -156,7 +156,7 @@
                 emailPlaceholder: "Your email address",
                 subject: "New TryClothes signup",
                 button: "I want to try",
-                consent: "I agree to be contacted by email for TryClothes access and I have read the <a href=\"./privacy/\">Privacy Policy</a>.",
+                consent: "I agree to be contacted by email for TryClothes access and I have read the <a href=\"/privacy/\">Privacy Policy</a>.",
                 consentError: "Accept the privacy consent to join the list.",
                 sending: "Sending your signup...",
                 success: "Done. You are on the list.",
@@ -198,7 +198,7 @@
 
         if (state.reducedMotion) {
             document.documentElement.classList.add("motion-fallback");
-            qs("#scroll-master")?.style.setProperty("--hero-scroll-height", "100vh");
+            qs("#scroll-master")?.style.setProperty("--hero-scroll-height", "auto");
             qs("#phone-drop-wrapper")?.classList.add("is-present");
             return;
         }
@@ -211,11 +211,15 @@
     }
 
     function getStoredLanguage() {
+        const defaultLanguage = document.documentElement.dataset.defaultLanguage === "en" ? "en" : "ro";
+        if (document.documentElement.dataset.defaultLanguage) {
+            return defaultLanguage;
+        }
         try {
             const stored = window.localStorage.getItem(languageStorageKey);
-            return stored === "en" || stored === "ro" ? stored : "ro";
+            return stored === "en" || stored === "ro" ? stored : defaultLanguage;
         } catch (error) {
-            return "ro";
+            return defaultLanguage;
         }
     }
 
@@ -286,6 +290,16 @@
 
         qsa("[data-language-option]").forEach((button) => {
             button.addEventListener("click", () => {
+                const url = button.dataset.languageUrl;
+                if (url && button.dataset.languageOption !== currentLanguage()) {
+                    try {
+                        window.localStorage.setItem(languageStorageKey, button.dataset.languageOption);
+                    } catch (error) {
+                        // Language preference is a convenience only.
+                    }
+                    window.location.href = url;
+                    return;
+                }
                 applyLanguage(button.dataset.languageOption);
             });
         });
@@ -521,7 +535,7 @@
         const setInitial = () => {
             const isMobile = media.mobile.matches;
             const isTablet = media.tablet.matches;
-            setStyle(hero, "--hero-scroll-height", isMobile ? "520vh" : isTablet ? "650vh" : "820vh");
+            setStyle(hero, "--hero-scroll-height", isMobile ? "470vh" : isTablet ? "560vh" : "620vh");
             handoffElements.forEach((element) => {
                 setStyle(element, "opacity", "0");
                 setStyle(element, "transform", `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`);
@@ -581,15 +595,15 @@
             const introY = isMobile ? -84 : -84;
             const floatY = isMobile ? -124 : -122;
             const finalY = isMobile ? -146 : -142;
-            const entry = smoothstep(0.025, 0.16, progress);
-            const firstSpin = smoothstep(0.2, 0.48, progress);
-            const secondSpin = smoothstep(0.54, 0.8, progress);
-            const spinPulse = Math.max(pulse(0.2, 0.34, 0.48, progress), pulse(0.54, 0.67, 0.8, progress));
-            const zoom = smoothstep(0.78, 0.88, progress);
-            const fadeOut = smoothstep(0.86, 0.94, progress);
-            const handoff = smoothstep(0.76, 0.86, progress);
-            const midOpacity = 0.68 * pulse(0.3, 0.38, 0.48, progress);
-            const finalOpacity = 0.72 * pulse(0.68, 0.76, 0.86, progress);
+            const entry = smoothstep(0.02, 0.14, progress);
+            const firstSpin = smoothstep(0.18, 0.44, progress);
+            const secondSpin = smoothstep(0.5, 0.74, progress);
+            const spinPulse = Math.max(pulse(0.18, 0.31, 0.44, progress), pulse(0.5, 0.62, 0.74, progress));
+            const zoom = smoothstep(0.76, 0.91, progress);
+            const fadeOut = smoothstep(0.9, 0.985, progress);
+            const handoff = smoothstep(0.82, 0.96, progress);
+            const midOpacity = 0.68 * pulse(0.27, 0.35, 0.45, progress);
+            const finalOpacity = 0.72 * pulse(0.64, 0.73, 0.88, progress);
             const rotationY = progress < 0.52 ? lerp(0, 180, firstSpin) : lerp(180, 360, secondSpin);
             const floatBlend = Math.sin(spinPulse * Math.PI);
             const yBase = lerp(-window.innerHeight, introY, entry);
@@ -647,7 +661,7 @@
             }
 
             if (transitionWash) {
-                setStyle(transitionWash, "opacity", smoothstep(0.87, 0.94, progress).toFixed(3));
+                setStyle(transitionWash, "opacity", smoothstep(0.84, 0.985, progress).toFixed(3));
             }
 
             if (glareFront && animateAtmosphere) {

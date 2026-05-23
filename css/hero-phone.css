@@ -2,7 +2,7 @@
 .hero-shell {
     position: relative;
     width: 100%;
-    height: var(--hero-scroll-height, 820vh);
+    height: var(--hero-scroll-height, 620vh);
     background: var(--cream);
     overflow: visible;
 }
@@ -31,7 +31,7 @@
     right: 0;
     bottom: -1px;
     z-index: 2;
-    height: 42vh;
+    height: 34vh;
     background:
         radial-gradient(ellipse at 50% 100%, rgba(232, 201, 130, 0.18), transparent 58%),
         linear-gradient(180deg, transparent 0%, rgba(253, 251, 247, 0.72) 54%, #fdfbf7 100%);
@@ -74,6 +74,7 @@
     justify-content: center;
     overflow: hidden;
     padding: 90px 24px 40px;
+    contain: layout paint;
 }
 
 .scene-3d {

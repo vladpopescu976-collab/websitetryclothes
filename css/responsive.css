@@ -84,7 +84,7 @@
 
 @media (min-width: 641px) and (max-width: 1024px) {
     .hero-shell {
-        height: var(--hero-scroll-height, 650vh);
+        height: var(--hero-scroll-height, 560vh);
     }
 
     .hero-bg {
@@ -108,7 +108,7 @@
 
 @media (max-width: 640px) {
     .hero-shell {
-        height: var(--hero-scroll-height, 520vh);
+        height: var(--hero-scroll-height, 470vh);
     }
 
     .site-nav {
@@ -367,8 +367,8 @@
     }
 
     .section-intro {
-        margin-top: -104vh;
-        padding-top: 18px;
+        margin-top: 0;
+        padding-top: 58px;
         padding-bottom: 14px;
     }
 
