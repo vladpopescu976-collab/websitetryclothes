@@ -4,11 +4,11 @@
     z-index: 20;
     overflow: hidden;
     scroll-margin-top: 108px;
-    padding: 136px 24px;
+    padding: 104px 24px;
     background: var(--cream);
     color: var(--onyx);
     content-visibility: auto;
-    contain-intrinsic-size: 980px;
+    contain-intrinsic-size: 780px;
 }
 
 .section::before,
@@ -41,7 +41,7 @@
 
 .section-heading {
     width: min(820px, 100%);
-    margin: 0 auto 72px;
+    margin: 0 auto 56px;
     text-align: center;
 }
 
@@ -72,12 +72,13 @@
         radial-gradient(circle at 14% 28%, rgba(220, 184, 104, 0.18), transparent 31rem),
         radial-gradient(circle at 86% 62%, rgba(40, 48, 62, 0.08), transparent 30rem),
         var(--cream);
-    padding-top: 150px;
+    padding-top: 108px;
 }
 
 .section-intro {
     margin-top: -118vh;
     padding-top: clamp(12px, 2.4vh, 34px);
+    padding-bottom: 72px;
 }
 
 .section-intro::before {
@@ -91,7 +92,7 @@
 
 .experience-layout {
     display: grid;
-    gap: 78px;
+    gap: 52px;
 }
 
 .editorial-heading {
@@ -100,7 +101,7 @@
 
 .floating-phone-stage {
     position: relative;
-    min-height: 660px;
+    min-height: 560px;
     display: grid;
     place-items: center;
     isolation: isolate;
@@ -122,16 +123,8 @@
 }
 
 .floating-phone-stage::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: 24px;
-    z-index: -1;
-    width: min(500px, 66vw);
-    height: 34px;
-    border-radius: 999px;
-    background: rgba(24, 24, 24, 0.13);
-    transform: translateX(-50%);
+    content: none;
+    display: none;
 }
 
 .editorial-phone {
@@ -151,19 +144,19 @@
 
 .editorial-phone-result {
     left: 18%;
-    top: 28px;
+    top: 8px;
     transform: rotate(-7deg);
 }
 
 .editorial-phone-fit {
     right: 17%;
-    bottom: 8px;
+    bottom: 0;
     transform: rotate(6deg);
 }
 
 .editorial-phone-shell {
     position: relative;
-    width: 300px;
+    width: 276px;
     aspect-ratio: 1179 / 2556;
     padding: 0;
     overflow: visible;
@@ -234,13 +227,17 @@
         var(--cream);
 }
 
+.section-steps {
+    padding-top: 96px;
+}
+
 .section-steps::before {
     background: linear-gradient(180deg, rgba(245, 239, 229, 0.9), rgba(253, 251, 247, 0));
 }
 
 .steps-heading {
     width: min(760px, 100%);
-    margin: 0 0 74px;
+    margin: 0 0 54px;
 }
 
 .steps-heading h2 {
@@ -260,7 +257,7 @@
 
 .step-card {
     position: relative;
-    min-height: 410px;
+    min-height: 360px;
     overflow: hidden;
     padding: 34px 30px;
     border: 1px solid rgba(24, 24, 24, 0.08);
@@ -304,7 +301,7 @@
     place-items: center;
     width: 68px;
     height: 68px;
-    margin-bottom: 96px;
+    margin-bottom: 66px;
     border: 1px solid rgba(174, 136, 54, 0.28);
     border-radius: 999px;
     color: rgba(24, 24, 24, 0.7);
@@ -413,7 +410,7 @@
 }
 
 .section-cta {
-    min-height: 640px;
+    min-height: 560px;
     display: grid;
     place-items: center;
     text-align: center;
