@@ -50,9 +50,30 @@
         text-align: center;
     }
 
+    .footer-brand {
+        justify-items: center;
+    }
+
     .brand-lockup-footer,
     .footer-links {
         justify-self: center;
+    }
+
+    .footer-brand p {
+        text-align: center;
+    }
+
+    .footer-links {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-links a:hover {
+        transform: translateY(-1px);
+    }
+
+    .anpc-badges {
+        justify-content: center;
     }
 }
 
@@ -255,9 +276,12 @@
         width: 100%;
     }
 
-    .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
+    .anpc-badge-sal {
+        width: min(300px, 100%);
+    }
+
+    .anpc-badge-sol {
+        width: min(230px, 100%);
     }
 }
 
