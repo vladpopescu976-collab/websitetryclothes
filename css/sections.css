@@ -604,8 +604,8 @@
     width: min(100%, var(--max));
     margin: 0 auto;
     display: grid;
-    grid-template-columns: minmax(340px, 0.92fr) minmax(520px, 1.08fr);
-    gap: clamp(34px, 5vw, 68px);
+    grid-template-columns: minmax(430px, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(28px, 4vw, 56px);
     align-items: start;
 }
 
@@ -631,10 +631,10 @@
 
 .anpc-badges {
     display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: nowrap;
+    gap: 10px;
     align-items: center;
-    max-width: 560px;
+    max-width: 420px;
     margin-top: 6px;
 }
 
@@ -667,13 +667,13 @@
 }
 
 .anpc-badge-sal {
-    width: min(320px, 100%);
-    padding: 6px;
+    width: 252px;
+    padding: 5px;
 }
 
 .anpc-badge-sol {
-    width: 214px;
-    padding: 6px;
+    width: 150px;
+    padding: 5px;
 }
 
 .footer-links {

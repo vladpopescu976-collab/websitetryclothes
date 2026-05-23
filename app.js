@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "footer-groups-2026-05-23";
+    const siteVersion = "anpc-compact-footer-2026-05-23";
     const languageStorageKey = "tryclothes:language";
 
     const state = {

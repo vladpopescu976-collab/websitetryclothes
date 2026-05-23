@@ -480,6 +480,11 @@
         width: 100%;
     }
 
+    .anpc-badges {
+        flex-wrap: wrap;
+        max-width: min(100%, 300px);
+    }
+
     .footer-links {
         grid-template-columns: 1fr;
         width: min(100%, 320px);
