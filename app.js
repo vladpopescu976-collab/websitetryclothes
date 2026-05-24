@@ -20,7 +20,8 @@
                 homeAria: "TryClothes home",
                 clothes: "Haine",
                 how: "Cum funcționează",
-                signup: "Înscrie-te"
+                signup: "Înscrie-te",
+                install: "Instalează"
             },
             hero: {
                 aria: "Prezentare TryClothes",
@@ -108,7 +109,8 @@
                 homeAria: "TryClothes home",
                 clothes: "Clothes",
                 how: "How it works",
-                signup: "Join"
+                signup: "Join",
+                install: "Install"
             },
             hero: {
                 aria: "TryClothes presentation",
