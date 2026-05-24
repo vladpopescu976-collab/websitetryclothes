@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 128" role="img" aria-labelledby="title desc">
-  <title id="title">Soluționarea online a litigiilor</title>
-  <desc id="desc">Badge pentru platforma de soluționare online a litigiilor.</desc>
-  <rect x="4" y="4" width="512" height="120" rx="38" fill="#fff" stroke="#2f3f86" stroke-width="4"/>
-  <text x="260" y="45" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="1.8" fill="#29367f">SOLUȚIONAREA ONLINE</text>
-  <text x="260" y="78" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="1.8" fill="#29367f">A LITIGIILOR</text>
-  <rect x="203" y="91" width="114" height="24" rx="12" fill="#29328a"/>
-  <text x="260" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="800" letter-spacing="0.6" fill="#fff">DETALII</text>
-</svg>

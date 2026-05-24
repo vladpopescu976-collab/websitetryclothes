@@ -321,10 +321,6 @@
     .anpc-badge-sal {
         width: min(300px, 100%);
     }
-
-    .anpc-badge-sol {
-        width: min(230px, 100%);
-    }
 }
 
 @media (max-width: 980px) {
