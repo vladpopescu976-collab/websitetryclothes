@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "safari-parity-2026-05-25";
+    const siteVersion = "chrome-scroll-stable-2026-05-25";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -455,7 +455,11 @@
 
         window.addEventListener("scroll", loadImages, { once: true, passive: true });
         window.addEventListener("pointerdown", loadImages, { once: true, passive: true });
-        idleLoad(loadHeroImages, 260);
+        if (state.chromium) {
+            loadHeroImages();
+        } else {
+            idleLoad(loadHeroImages, 260);
+        }
         window.addEventListener("load", () => {
             idleLoad(loadHeroImages, 520);
             window.setTimeout(() => idleLoad(loadImages, 1200), 900);
@@ -563,7 +567,7 @@
 
         const renderFrame = () => {
             const isMobile = media.mobile.matches;
-            const smoothing = isMobile ? 0.22 : 1;
+            const smoothing = isMobile ? 0.22 : state.chromium ? 0.2 : 1;
             if (smoothing >= 1) {
                 renderedProgress = targetProgress;
             } else {
@@ -615,7 +619,7 @@
             const originalOpacity = 0.82 * (1 - smoothstep(0.46, 0.52, progress));
             const resultOpacity = smoothstep(0.52, 0.58, progress);
             const heroTextOut = smoothstep(0, 0.15, progress);
-            const animateAtmosphere = !isMobile && !document.documentElement.classList.contains("is-programmatic-scroll");
+            const animateAtmosphere = !state.chromium && !isMobile && !document.documentElement.classList.contains("is-programmatic-scroll");
             const spinTilt = spinPulse * (progress > 0.22 ? 1 : 0);
             const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinTilt;
             const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinTilt;
@@ -624,7 +628,7 @@
             setStyle(phoneDrop, "transform", `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`);
             setStyle(phone, "transform", `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin)).toFixed(2)}deg)`);
 
-            if (isMobile) {
+            if (state.chromium || isMobile) {
                 setVars(phoneDrop, {
                     "--original-screen-opacity": originalOpacity.toFixed(3),
                     "--result-screen-opacity": resultOpacity.toFixed(3)
@@ -675,7 +679,7 @@
                 setStyle(glareBack, "transform", `translateX(${lerp(-100, 100, secondSpin).toFixed(1)}%) rotate(25deg)`);
             }
 
-            if (scanLine && !isMobile) {
+            if (scanLine && !state.chromium && !isMobile) {
                 setStyle(scanLine, "opacity", (progress > 0.22 && progress < 0.86 ? 1 - zoom : 0.04).toFixed(3));
             }
 
