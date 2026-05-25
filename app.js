@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "chrome-performance-2026-05-25";
+    const siteVersion = "chrome-fluid-2026-05-25";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -455,7 +455,11 @@
 
         window.addEventListener("scroll", loadImages, { once: true, passive: true });
         window.addEventListener("pointerdown", loadImages, { once: true, passive: true });
-        idleLoad(loadHeroImages, 260);
+        if (state.chromium) {
+            loadHeroImages();
+        } else {
+            idleLoad(loadHeroImages, 260);
+        }
         window.addEventListener("load", () => {
             idleLoad(loadHeroImages, 520);
             window.setTimeout(() => idleLoad(loadImages, 1200), 900);
@@ -533,6 +537,7 @@
         let targetProgress = 0;
         let renderedProgress = 0;
         let ticking = false;
+        let chromiumScreenMode = "";
 
         const setInitial = () => {
             const isMobile = media.mobile.matches;
@@ -563,7 +568,7 @@
 
         const renderFrame = () => {
             const isMobile = media.mobile.matches;
-            const smoothing = state.chromium ? 0.38 : isMobile ? 0.22 : 1;
+            const smoothing = state.chromium ? 0.24 : isMobile ? 0.22 : 1;
             if (smoothing >= 1) {
                 renderedProgress = targetProgress;
             } else {
@@ -611,19 +616,27 @@
             const yFloat = lerp(introY, floatY, floatBlend);
             const y = lerp(entry < 1 ? yBase : yFloat, finalY, zoom);
             const scale = lerp(lerp(0.8, 1, entry) + spinPulse * 0.04, 2.18, zoom);
-            const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinPulse * (progress > 0.22 ? 1 : 0);
-            const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinPulse * (progress > 0.22 ? 1 : 0);
             const phoneOpacity = clamp(entry);
             const originalOpacity = 0.82 * (1 - smoothstep(0.46, 0.52, progress));
             const resultOpacity = smoothstep(0.52, 0.58, progress);
             const heroTextOut = smoothstep(0, 0.15, progress);
             const animateAtmosphere = !state.chromium && !isMobile && !document.documentElement.classList.contains("is-programmatic-scroll");
+            const tiltStrength = state.chromium ? 0.42 : 1;
+            const spinTilt = spinPulse * (progress > 0.22 ? 1 : 0);
+            const rotationZ = lerp(12, 0, entry) + (progress < 0.52 ? -5.5 : 5.5) * spinTilt * tiltStrength;
+            const rotationX = lerp(15, 0, entry) + (progress < 0.52 ? 7.5 : -7.5) * spinTilt * tiltStrength;
 
             setStyle(phoneDrop, "opacity", phoneOpacity.toFixed(3));
             setStyle(phoneDrop, "transform", `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`);
-            setStyle(phone, "transform", `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin)).toFixed(2)}deg)`);
+            setStyle(phone, "transform", `rotateY(${rotationY.toFixed(2)}deg) rotateX(${(-4 * firstSpin * (1 - secondSpin) * tiltStrength).toFixed(2)}deg)`);
 
-            if (state.chromium || isMobile) {
+            if (state.chromium) {
+                const nextScreenMode = progress >= 0.545 ? "result" : "original";
+                if (chromiumScreenMode !== nextScreenMode) {
+                    chromiumScreenMode = nextScreenMode;
+                    phoneDrop.dataset.screen = nextScreenMode;
+                }
+            } else if (isMobile) {
                 setVars(phoneDrop, {
                     "--original-screen-opacity": originalOpacity.toFixed(3),
                     "--result-screen-opacity": resultOpacity.toFixed(3)

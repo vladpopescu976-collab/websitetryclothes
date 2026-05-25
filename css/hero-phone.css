@@ -463,13 +463,33 @@
         inset -8px 0 18px rgba(232, 201, 130, 0.08);
 }
 
-.is-chromium .phone-body-layer {
-    background-image: none;
-    box-shadow: inset 0 0 9px rgba(0, 0, 0, 0.88);
+.is-chromium .phone-drop {
+    --original-screen-opacity: 0.82;
+    --result-screen-opacity: 0;
 }
 
-.is-chromium .phone-body-layer:nth-child(2n + 3):nth-child(-n + 17) {
+.is-chromium .phone-drop[data-screen="result"] {
+    --original-screen-opacity: 0;
+    --result-screen-opacity: 1;
+}
+
+.is-chromium .phone-body-layer {
     display: none;
+    background-image: none;
+    box-shadow: none;
+}
+
+.is-chromium .phone-body-layer:nth-child(1),
+.is-chromium .phone-body-layer:nth-child(5),
+.is-chromium .phone-body-layer:nth-child(10),
+.is-chromium .phone-body-layer:nth-child(15),
+.is-chromium .phone-body-layer:nth-child(19) {
+    display: block;
+}
+
+.is-chromium .screen-img {
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .is-chromium .screen-img-muted {
