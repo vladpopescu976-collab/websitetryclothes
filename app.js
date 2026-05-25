@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "chrome-scroll-stable-2026-05-25";
+    const siteVersion = "chrome-desktop-storyboard-2026-05-25";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -541,7 +541,8 @@
         const setInitial = () => {
             const isMobile = media.mobile.matches;
             const isTablet = media.tablet.matches;
-            setStyle(hero, "--hero-scroll-height", isMobile ? "420vh" : isTablet ? "480vh" : "540vh");
+            const useChromeDesktop = state.chromium && !isMobile;
+            setStyle(hero, "--hero-scroll-height", useChromeDesktop ? "390vh" : isMobile ? "420vh" : isTablet ? "480vh" : "540vh");
             handoffElements.forEach((element) => {
                 setStyle(element, "opacity", "0");
                 setStyle(element, "transform", `translate3d(0, ${isMobile ? 24 : 42}px, 0) scale(0.99)`);
@@ -567,7 +568,8 @@
 
         const renderFrame = () => {
             const isMobile = media.mobile.matches;
-            const smoothing = isMobile ? 0.22 : state.chromium ? 0.2 : 1;
+            const useChromeDesktop = state.chromium && !isMobile;
+            const smoothing = isMobile ? 0.22 : useChromeDesktop ? 0.18 : 1;
             if (smoothing >= 1) {
                 renderedProgress = targetProgress;
             } else {
@@ -598,6 +600,62 @@
 
         const apply = (progress) => {
             const isMobile = media.mobile.matches;
+            const useChromeDesktop = state.chromium && !isMobile;
+
+            if (useChromeDesktop) {
+                const entry = smoothstep(0.02, 0.2, progress);
+                const reveal = smoothstep(0.34, 0.6, progress);
+                const revealPulse = Math.sin(reveal * Math.PI);
+                const zoom = smoothstep(0.7, 0.985, progress);
+                const handoff = smoothstep(0.78, 1, progress);
+                const heroTextOut = smoothstep(0, 0.16, progress);
+                const midOpacity = 0.64 * pulse(0.24, 0.38, 0.54, progress);
+                const finalOpacity = 0.74 * pulse(0.58, 0.72, 0.9, progress);
+                const originalOpacity = 0.84 * (1 - smoothstep(0.38, 0.54, progress));
+                const resultOpacity = smoothstep(0.46, 0.62, progress);
+                const yEntry = lerp(-window.innerHeight * 0.78, -84, entry);
+                const yFloat = yEntry - revealPulse * 24;
+                const y = lerp(yFloat, -138, zoom);
+                const scale = lerp(lerp(0.84, 1.06, entry) + revealPulse * 0.025, 2.12, zoom);
+                const rotationY = lerp(-9, 12, reveal) - zoom * 5;
+                const rotationZ = lerp(10, 0, entry) + revealPulse * 1.8;
+                const rotationX = lerp(12, 1.5, entry) - reveal * 2.4;
+
+                setStyle(phoneDrop, "opacity", entry.toFixed(3));
+                setStyle(phoneDrop, "transform", `translate3d(0, ${y.toFixed(2)}px, 0) rotateZ(${rotationZ.toFixed(2)}deg) rotateX(${rotationX.toFixed(2)}deg) scale(${scale.toFixed(4)})`);
+                setStyle(phone, "transform", `rotateY(${rotationY.toFixed(2)}deg) rotateX(0deg)`);
+                setVars(phoneDrop, {
+                    "--original-screen-opacity": originalOpacity.toFixed(3),
+                    "--result-screen-opacity": resultOpacity.toFixed(3)
+                });
+
+                if (heroText) {
+                    setStyle(heroText, "opacity", (1 - heroTextOut).toFixed(3));
+                    setStyle(heroText, "transform", `translate(-50%, ${(-34 * heroTextOut).toFixed(2)}px) scale(${(1 - 0.035 * heroTextOut).toFixed(3)})`);
+                }
+
+                if (textMid) {
+                    setStyle(textMid, "opacity", midOpacity.toFixed(3));
+                    setStyle(textMid, "transform", `translate(-50%, ${lerp(14, -24, midOpacity / 0.64 || 0).toFixed(2)}px)`);
+                }
+
+                if (textFinal) {
+                    setStyle(textFinal, "opacity", finalOpacity.toFixed(3));
+                    setStyle(textFinal, "transform", `translate(-50%, ${lerp(16, -22, finalOpacity / 0.74 || 0).toFixed(2)}px)`);
+                }
+
+                if (transitionWash) {
+                    setStyle(transitionWash, "opacity", (0.7 * smoothstep(0.88, 1, progress)).toFixed(3));
+                }
+
+                handoffElements.forEach((element, index) => {
+                    const elementProgress = clamp(handoff - index * 0.05);
+                    setStyle(element, "opacity", elementProgress.toFixed(3));
+                    setStyle(element, "transform", `translate3d(0, ${((1 - elementProgress) * 36).toFixed(2)}px, 0) scale(${(0.99 + elementProgress * 0.01).toFixed(3)})`);
+                });
+                return;
+            }
+
             const introY = isMobile ? -84 : -84;
             const floatY = isMobile ? -124 : -122;
             const finalY = isMobile ? -146 : -142;
