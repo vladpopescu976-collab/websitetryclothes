@@ -7,6 +7,16 @@
     overflow: visible;
 }
 
+.is-chromium-desktop .hero-shell {
+    display: none;
+}
+
+.is-chromium-desktop #experience .gs-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
+
 .hero-shell::before,
 .hero-shell::after {
     content: "";

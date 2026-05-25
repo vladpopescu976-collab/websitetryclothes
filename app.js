@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "chrome-desktop-simple-2026-05-25";
+    const siteVersion = "chrome-desktop-no-hero-2026-05-25";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -193,6 +193,12 @@
     document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.dataset.tryclothesSite = siteVersion;
         document.documentElement.classList.toggle("is-chromium", state.chromium);
+        const chromeDesktopMedia = window.matchMedia("(min-width: 641px)");
+        const syncChromeDesktopClass = () => {
+            document.documentElement.classList.toggle("is-chromium-desktop", state.chromium && chromeDesktopMedia.matches);
+        };
+        syncChromeDesktopClass();
+        chromeDesktopMedia.addEventListener?.("change", syncChromeDesktopClass);
         initLanguageSwitcher();
         initNavigationScroll();
         initDeferredImages();
@@ -532,6 +538,18 @@
             mobile: window.matchMedia("(max-width: 640px)"),
             tablet: window.matchMedia("(min-width: 641px) and (max-width: 1024px)")
         };
+
+        if (state.chromium && !media.mobile.matches) {
+            setStyle(hero, "--hero-scroll-height", "0px");
+            phoneDrop.classList.add("is-present");
+            handoffElements.forEach((element) => {
+                setStyle(element, "opacity", "1");
+                setStyle(element, "transform", "none");
+                setStyle(element, "filter", "none");
+                setStyle(element, "transition", "none");
+            });
+            return;
+        }
 
         let metrics = { top: 0, range: 1 };
         let targetProgress = 0;
