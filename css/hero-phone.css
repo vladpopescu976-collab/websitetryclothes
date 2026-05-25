@@ -11,6 +11,10 @@
     display: none;
 }
 
+.is-chromium-desktop #experience {
+    padding-top: clamp(140px, 13vh, 172px);
+}
+
 .is-chromium-desktop #experience .gs-reveal {
     opacity: 1 !important;
     transform: none !important;
