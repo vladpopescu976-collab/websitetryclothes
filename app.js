@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "hero-handoff-2026-05-24";
+    const siteVersion = "chrome-performance-2026-05-25";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -563,7 +563,7 @@
 
         const renderFrame = () => {
             const isMobile = media.mobile.matches;
-            const smoothing = state.chromium ? 0.2 : isMobile ? 0.22 : 1;
+            const smoothing = state.chromium ? 0.38 : isMobile ? 0.22 : 1;
             if (smoothing >= 1) {
                 renderedProgress = targetProgress;
             } else {
@@ -626,8 +626,7 @@
             if (state.chromium || isMobile) {
                 setVars(phoneDrop, {
                     "--original-screen-opacity": originalOpacity.toFixed(3),
-                    "--result-screen-opacity": resultOpacity.toFixed(3),
-                    "--edge-glow": (entry * 0.2 + spinPulse * 0.28 + zoom * 0.1).toFixed(3)
+                    "--result-screen-opacity": resultOpacity.toFixed(3)
                 });
             } else {
                 const flare = Math.max(pulse(0.235, 0.31, 0.4, progress), pulse(0.565, 0.64, 0.74, progress));
