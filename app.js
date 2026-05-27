@@ -1,7 +1,7 @@
 (() => {
     const qs = (selector, scope = document) => scope.querySelector(selector);
     const qsa = (selector, scope = document) => Array.from(scope.querySelectorAll(selector));
-    const siteVersion = "chrome-desktop-no-hero-2026-05-25";
+    const siteVersion = "tab-title-2026-05-27";
     const languageStorageKey = "tryclothes:language";
 
     const state = {
@@ -246,7 +246,7 @@
 
         document.documentElement.lang = activeLang;
         document.documentElement.dataset.siteLanguage = activeLang;
-        document.title = dictionary.meta.title;
+        document.title = "TryClothes";
 
         const description = qs("meta[name='description']");
         const ogLocale = qs("meta[property='og:locale']");
